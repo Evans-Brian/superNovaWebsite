@@ -35,10 +35,8 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
             <address className="not-italic text-gray-600 dark:text-gray-300 space-y-2">
-              <p>123 Innovation Drive</p>
-              <p>Tech Valley, CA 94043</p>
-              <p>Email: info@supernovaautomations.com</p>
-              <p>Phone: (555) 123-4567</p>
+              <p>Email: supernovaautomations@gmail.com</p>
+              <p>Phone: (330) 357-9229</p>
             </address>
           </div>
         </div>

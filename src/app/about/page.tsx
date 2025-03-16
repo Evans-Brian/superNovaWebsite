@@ -23,10 +23,10 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Story</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                SuperNova Automations was founded in 2020 with a simple mission: to help businesses harness the power of automation and artificial intelligence to work smarter, not harder.
+                SuperNova Automations was founded with a simple mission: to help businesses harness the power of automation and artificial intelligence to work smarter, not harder.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Our founder, a veteran in the tech industry, saw that many businesses were struggling to keep up with the rapid pace of technological change. They were either overwhelmed by the complexity of new tools or unsure how to integrate them into their existing workflows.
+                Our founder, coming from the tech industry, saw that many businesses were struggling to keep up with the rapid pace of technological change. They were either overwhelmed by the complexity of new tools or unsure how to integrate them into their existing workflows.
               </p>
               <p className="text-gray-600 dark:text-gray-300">
                 That's where we come in. We bridge the gap between cutting-edge technology and practical business applications, delivering solutions that are both innovative and accessible.
@@ -89,7 +89,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Team Section */}
+      {/* Our Team Section - Commented out as requested
       <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -135,6 +135,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA Section */}
       <section className="py-16 bg-indigo-600 text-white">

@@ -11,6 +11,12 @@ interface VideoCardProps {
 export default function VideoCard({ title, videoId, description }: VideoCardProps) {
   const [showCallModal, setShowCallModal] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [origin, setOrigin] = useState('');
+  
+  // Set origin on client-side only
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   // Load YouTube API and handle iframe initialization
   useEffect(() => {
@@ -60,7 +66,7 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
       >
         <iframe
           ref={iframeRef}
-          src={`https://www.youtube.com/embed/${videoId}?rel=0&enablejsapi=1&autoplay=0&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`}
+          src={`https://www.youtube.com/embed/${videoId}?rel=0&enablejsapi=1&autoplay=0&playsinline=1${origin ? `&origin=${encodeURIComponent(origin)}` : ''}`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           loading="lazy"
