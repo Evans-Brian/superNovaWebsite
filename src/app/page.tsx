@@ -103,7 +103,11 @@ export default function Home() {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 bg-indigo-600 text-white">
+      <section className="py-16 text-white" style={{ 
+        backgroundImage: 'url(/supernova-bottom.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'bottom center'
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">

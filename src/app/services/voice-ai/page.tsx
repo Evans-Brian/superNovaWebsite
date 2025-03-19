@@ -5,7 +5,11 @@ export default function VoiceAIPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-indigo-600 text-white py-16">
+      <section className="text-white py-16" style={{ 
+        backgroundImage: 'url(/supernova-top.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'top center'
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Voice AI Solutions</h1>
@@ -151,7 +155,11 @@ export default function VoiceAIPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-indigo-600 text-white">
+      <section className="py-16 text-white" style={{ 
+        backgroundImage: 'url(/supernova-bottom.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'bottom center'
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business with Voice AI?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">

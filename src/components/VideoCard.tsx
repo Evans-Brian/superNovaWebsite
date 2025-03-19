@@ -58,7 +58,7 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden">
       <div 
         className="relative" 
         style={{ height: '450px' }}
@@ -90,7 +90,7 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
       {/* Call Modal */}
       {showCallModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full">
+          <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 max-w-md w-full">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect with an Agent</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               In a real implementation, this would connect you with an agent using Twilio or WebRTC.
@@ -98,7 +98,7 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
             <div className="flex justify-between">
               <button
                 onClick={() => setShowCallModal(false)}
-                className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
+                className="bg-gray-200 hover:bg-gray-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-gray-800 dark:text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
               >
                 Cancel
               </button>

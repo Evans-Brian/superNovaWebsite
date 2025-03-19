@@ -1,12 +1,22 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900">
+    <footer className="bg-gray-100 dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">SuperNova Automations</h3>
+            <div className="flex items-center space-x-1 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">SuperNova Automations</h3>
+              <Image 
+                src="/logo.svg" 
+                alt="SuperNova Automations Logo" 
+                width={48} 
+                height={48} 
+                className="h-12 w-12"
+              />
+            </div>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               Empowering businesses with cutting-edge automation solutions.
             </p>

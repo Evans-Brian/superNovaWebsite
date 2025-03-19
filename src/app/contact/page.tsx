@@ -4,7 +4,11 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-indigo-600 text-white py-16">
+      <section className="text-white py-16" style={{ 
+        backgroundImage: 'url(/supernova-top.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'top center'
+      }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>

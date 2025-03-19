@@ -10,7 +10,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, icon, link }: ServiceCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+    <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
       <div className="p-6">
         <div className="flex items-center justify-center w-12 h-12 rounded-md bg-indigo-500 text-white mb-4">
           {icon === 'voice' && (

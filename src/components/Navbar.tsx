@@ -17,11 +17,18 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-md dark:bg-gray-900">
+    <nav className="bg-white shadow-md dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex-shrink-0 flex items-center space-x-2">
+              <Image 
+                src="/logo.svg" 
+                alt="SuperNova Automations Logo" 
+                width={40} 
+                height={40} 
+                className="h-10 w-10"
+              />
               <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">
                 SuperNova Automations
               </span>
@@ -54,18 +61,18 @@ export default function Navbar() {
                 </svg>
               </button>
               <div 
-                className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 transition ease-out duration-200 z-10 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-8 before:-translate-y-8 before:bg-transparent ${
+                className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-neutral-900 ring-1 ring-black ring-opacity-5 transition ease-out duration-200 z-10 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-8 before:-translate-y-8 before:bg-transparent ${
                   isServicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'
                 }`}
               >
                 <div className="py-1">
-                  <Link href="/services/voice-ai" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                  <Link href="/services/voice-ai" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800">
                     Voice AI Solutions
                   </Link>
-                  <Link href="/services/process-automations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                  <Link href="/services/process-automations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800">
                     Process Automations
                   </Link>
-                  <Link href="/services/custom-integrations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+                  <Link href="/services/custom-integrations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800">
                     Custom Integrations
                   </Link>
                 </div>
@@ -105,6 +112,18 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="flex items-center space-x-2 px-3 py-2 mb-2">
+              <Image 
+                src="/logo.svg" 
+                alt="SuperNova Automations Logo" 
+                width={30} 
+                height={30} 
+                className="h-8 w-8"
+              />
+              <span className="text-base font-bold text-indigo-600 dark:text-indigo-400">
+                SuperNova Automations
+              </span>
+            </div>
             <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-200 dark:hover:text-indigo-400 dark:hover:bg-gray-800">
               Home
             </Link>
