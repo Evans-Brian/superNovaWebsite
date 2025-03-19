@@ -58,7 +58,7 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
   };
 
   return (
-    <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden">
+    <div className="bg-neutral-900 rounded-lg shadow-md overflow-hidden">
       <div 
         className="relative" 
         style={{ height: '450px' }}
@@ -75,9 +75,9 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
         ></iframe>
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
+        <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
         {description && (
-          <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+          <p className="text-gray-300 mb-4">{description}</p>
         )}
         <button
           onClick={handleCallNow}
@@ -90,15 +90,15 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
       {/* Call Modal */}
       {showCallModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-neutral-900 rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect with an Agent</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+          <div className="bg-neutral-900 rounded-lg p-6 max-w-md w-full">
+            <h3 className="text-lg font-semibold text-white mb-4">Connect with an Agent</h3>
+            <p className="text-gray-300 mb-4">
               In a real implementation, this would connect you with an agent using Twilio or WebRTC.
             </p>
             <div className="flex justify-between">
               <button
                 onClick={() => setShowCallModal(false)}
-                className="bg-gray-200 hover:bg-gray-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-gray-800 dark:text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
+                className="bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
               >
                 Cancel
               </button>

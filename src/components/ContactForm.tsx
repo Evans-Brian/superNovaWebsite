@@ -62,8 +62,8 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Us</h2>
+    <div className="bg-neutral-900 rounded-lg shadow-md p-6">
+      <h2 className="text-2xl font-bold text-white mb-6">Contact Us</h2>
       
       {formStatus.submitted && formStatus.success ? (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
@@ -73,7 +73,7 @@ export default function ContactForm() {
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
             Name *
           </label>
           <input
@@ -83,12 +83,12 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
             Email *
           </label>
           <input
@@ -98,12 +98,12 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
           />
         </div>
         
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">
             Phone
           </label>
           <input
@@ -112,12 +112,12 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
           />
         </div>
         
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">
             Company
           </label>
           <input
@@ -126,12 +126,12 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
           />
         </div>
         
         <div>
-          <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-1">
             Service of Interest *
           </label>
           <select
@@ -140,7 +140,7 @@ export default function ContactForm() {
             value={formData.service}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
           >
             <option value="voice-ai">Voice AI Solutions</option>
             <option value="process-automations">Process Automations</option>
@@ -150,7 +150,7 @@ export default function ContactForm() {
         </div>
         
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
             Message *
           </label>
           <textarea
@@ -160,7 +160,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
           ></textarea>
         </div>
         
