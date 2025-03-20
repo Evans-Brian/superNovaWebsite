@@ -83,7 +83,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           />
         </div>
         
@@ -98,7 +98,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           />
         </div>
         
@@ -112,7 +112,7 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           />
         </div>
         
@@ -126,7 +126,7 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           />
         </div>
         
@@ -140,7 +140,7 @@ export default function ContactForm() {
             value={formData.service}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           >
             <option value="voice-ai">Voice AI Solutions</option>
             <option value="process-automations">Process Automations</option>
@@ -160,7 +160,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           ></textarea>
         </div>
         
@@ -168,7 +168,8 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={formStatus.submitted && !formStatus.success}
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out disabled:opacity-50"
+            className="w-full text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out disabled:opacity-50 hover:opacity-90"
+            style={{ backgroundColor: 'rgb(102, 57, 218)' }}
           >
             {formStatus.submitted && !formStatus.success ? 'Submitting...' : 'Submit'}
           </button>

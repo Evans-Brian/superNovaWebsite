@@ -26,17 +26,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/voice-ai" className="text-gray-300 hover:text-indigo-400">
+                <Link href="/services/voice-ai" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Voice AI Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/services/process-automations" className="text-gray-300 hover:text-indigo-400">
+                <Link href="/services/process-automations" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Process Automations
                 </Link>
               </li>
               <li>
-                <Link href="/services/custom-integrations" className="text-gray-300 hover:text-indigo-400">
+                <Link href="/services/custom-integrations" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Custom Integrations
                 </Link>
               </li>

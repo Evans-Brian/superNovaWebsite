@@ -81,7 +81,8 @@ export default function VideoCard({ title, videoId, description }: VideoCardProp
         )}
         <button
           onClick={handleCallNow}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
+          className="w-full text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out hover:opacity-90"
+          style={{ backgroundColor: 'rgb(102, 57, 218)' }}
         >
           Call Now
         </button>

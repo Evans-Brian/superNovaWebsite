@@ -12,7 +12,7 @@ export default function ServiceCard({ title, description, icon, link }: ServiceC
   return (
     <div className="bg-neutral-950 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
       <div className="p-6">
-        <div className="flex items-center justify-center w-12 h-12 rounded-md bg-indigo-600 text-white mb-4">
+        <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
           {icon === 'voice' && (
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
@@ -33,7 +33,8 @@ export default function ServiceCard({ title, description, icon, link }: ServiceC
         <p className="text-gray-300 mb-4">{description}</p>
         <Link 
           href={link}
-          className="inline-flex items-center text-indigo-400 hover:text-indigo-300"
+          className="inline-flex items-center hover:opacity-80"
+          style={{ color: 'rgb(102, 57, 218)' }}
         >
           Learn more
           <svg className="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
