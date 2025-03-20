@@ -36,8 +36,12 @@ export default function VoiceAIPage() {
                 With SuperNova Automations, you get more than just technology – you get a partner committed to helping you achieve your business goals through innovative voice solutions.
               </p>
             </div>
-            <div className="bg-gray-700 rounded-lg h-80 flex items-center justify-center">
-              <p className="text-gray-400 italic">Voice AI illustration placeholder</p>
+            <div className="bg-gray-700 rounded-lg h-80 flex items-center justify-center overflow-hidden">
+              <img 
+                src="/voice_ai_diagram.png" 
+                alt="Voice AI Diagram" 
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
         </div>
