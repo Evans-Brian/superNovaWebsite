@@ -35,8 +35,12 @@ export default function ProcessAutomationsPage() {
                 Whether you're looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
               </p>
             </div>
-            <div className="bg-gray-700 rounded-lg h-80 flex items-center justify-center">
-              <p className="text-gray-400 italic">Process automation illustration placeholder</p>
+            <div className="bg-gray-950 rounded-lg h-80 flex items-center justify-center overflow-hidden">
+              <img 
+                src="/process-automation-diagram.png" 
+                alt="Process Automation Diagram" 
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
         </div>
