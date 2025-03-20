@@ -29,7 +29,7 @@ export default function Navbar() {
                 height={40} 
                 className="h-10 w-10"
               />
-              <span className="text-xl font-bold text-indigo-400">
+              <span className="text-xl font-bold indigo-100">
                 SuperNova Automations
               </span>
             </Link>
@@ -120,7 +120,7 @@ export default function Navbar() {
                 height={30} 
                 className="h-8 w-8"
               />
-              <span className="text-base font-bold text-indigo-400">
+              <span className="text-base font-bold text-purple-600">
                 SuperNova Automations
               </span>
             </div>
