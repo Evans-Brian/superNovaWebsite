@@ -307,10 +307,6 @@ export default function CustomIntegrationsPage() {
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">6</span>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Continuous Improvement</h3>
-              <p className="text-gray-300">
-                We work with you to identify opportunities for enhancement and optimization, ensuring your integration solution evolves with your business needs.
-              </p>
             </div>
           </div>
         </div>

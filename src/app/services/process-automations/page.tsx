@@ -20,7 +20,7 @@ export default function ProcessAutomationsPage() {
       </section>
 
       {/* Overview Section */}
-      <section className="py-16 bg-gray-950">
+      <section className="py-16 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -35,7 +35,7 @@ export default function ProcessAutomationsPage() {
                 Whether you're looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
               </p>
             </div>
-            <div className="bg-gray-950 rounded-lg h-80 flex items-center justify-center overflow-hidden">
+            <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
               <img 
                 src="/process-automation-diagram.png" 
                 alt="Process Automation Diagram" 
@@ -47,7 +47,7 @@ export default function ProcessAutomationsPage() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Common Use Cases</h2>
@@ -133,7 +133,7 @@ export default function ProcessAutomationsPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-950">
+      <section className="py-16 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Benefits of Process Automation</h2>
