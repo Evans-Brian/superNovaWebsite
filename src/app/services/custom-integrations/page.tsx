@@ -35,7 +35,7 @@ export default function CustomIntegrationsPage() {
                 We focus on creating reliable, scalable, and secure integrations that enhance your operational efficiency and provide a unified view of your business data.
               </p>
             </div>
-            <div className="bg-gray-950 rounded-lg h-80 flex items-center justify-center overflow-hidden">
+            <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
               <img 
                 src="/custom-integrations-diagram.png" 
                 alt="Custom Integrations Diagram" 
