@@ -115,7 +115,7 @@ export default function Home() {
           </p>
           <Link 
             href="/contact" 
-            className="inline-block bg-white text-indigo-600 hover:bg-gray-100 font-medium py-3 px-8 rounded-md shadow-md transition duration-150 ease-in-out"
+            className="inline-block bg-neutral-800 text-white hover:bg-neutral-700 font-medium py-3 px-8 rounded-md shadow-md transition duration-150 ease-in-out"
           >
             Get in Touch
           </Link>

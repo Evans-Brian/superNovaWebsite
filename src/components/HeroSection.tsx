@@ -19,13 +19,13 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Link 
               href="/contact" 
-              className="inline-block bg-white text-indigo-600 hover:bg-gray-100 font-medium py-3 px-6 rounded-md shadow-md transition duration-150 ease-in-out text-center"
+              className="inline-block bg-neutral-800 text-white hover:bg-neutral-700 font-medium py-3 px-6 rounded-md shadow-md transition duration-150 ease-in-out text-center"
             >
               Get Started
             </Link>
             <Link 
               href="/services/voice-ai" 
-              className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-indigo-600 font-medium py-3 px-6 rounded-md transition duration-150 ease-in-out text-center"
+              className="inline-block bg-transparent border-2 border-white text-white hover:bg-neutral-800 hover:border-neutral-800 font-medium py-3 px-6 rounded-md transition duration-150 ease-in-out text-center"
             >
               Explore Solutions
             </Link>

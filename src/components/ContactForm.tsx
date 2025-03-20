@@ -62,7 +62,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-neutral-900 rounded-lg shadow-md p-6">
+    <div className="bg-neutral-950 rounded-lg shadow-md p-6">
       <h2 className="text-2xl font-bold text-white mb-6">Contact Us</h2>
       
       {formStatus.submitted && formStatus.success ? (
@@ -83,7 +83,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
           />
         </div>
         
@@ -98,7 +98,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
           />
         </div>
         
@@ -112,7 +112,7 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
           />
         </div>
         
@@ -126,7 +126,7 @@ export default function ContactForm() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
           />
         </div>
         
@@ -140,7 +140,7 @@ export default function ContactForm() {
             value={formData.service}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
           >
             <option value="voice-ai">Voice AI Solutions</option>
             <option value="process-automations">Process Automations</option>
@@ -160,7 +160,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white"
+            className="w-full px-4 py-2 border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-gray-800 text-white"
           ></textarea>
         </div>
         
