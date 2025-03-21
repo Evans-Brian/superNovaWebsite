@@ -71,7 +71,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Expert Team</h3>
               <p className="text-gray-300">
-                We brings years of experience in automation and engineering.
+                We bring years of experience in automation and engineering.
               </p>
             </div>
             
