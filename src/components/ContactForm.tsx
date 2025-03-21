@@ -142,7 +142,7 @@ export default function ContactForm() {
             required
             className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-gray-400 bg-gray-800 text-white"
           >
-            <option value="voice-ai">Voice AI Solutions</option>
+            <option value="voice-ai">Voice Agent Solutions</option>
             <option value="process-automations">Process Automations</option>
             <option value="custom-integrations">Custom Integrations</option>
             <option value="other">Other</option>

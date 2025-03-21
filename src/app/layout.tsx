@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SuperNova Automations | Voice AI & Process Automation Solutions",
-  description: "SuperNova Automations provides cutting-edge Voice AI Solutions, Process Automations, and Custom Integrations to streamline your business operations.",
+  title: "SuperNova Automations | Voice Agent & Process Automation Solutions",
+  description: "SuperNova Automations provides cutting-edge Voice Agent Solutions, Process Automations, and Custom Integrations to streamline your business operations.",
 };
 
 export default function RootLayout({

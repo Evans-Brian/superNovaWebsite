@@ -334,7 +334,7 @@ export default function CustomIntegrationsPage() {
               href="/services/voice-ai" 
               className="inline-block bg-transparent border-2 border-white text-white hover:bg-neutral-800 hover:border-neutral-800 font-medium py-3 px-8 rounded-md transition duration-150 ease-in-out"
             >
-              Explore Voice AI Solutions
+              Explore Voice Agent Solutions
             </Link>
           </div>
         </div>

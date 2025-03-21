@@ -12,9 +12,9 @@ export default function VoiceAIPage() {
       }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Voice AI Solutions</h1>
+            <h1 className="text-4xl font-bold mb-4">Voice Agent Solutions</h1>
             <p className="text-xl max-w-3xl mx-auto">
-              Transform your customer interactions and streamline operations with our cutting-edge Voice AI technology.
+              Transform your customer interactions and streamline operations with our cutting-edge Voice Agent technology.
             </p>
           </div>
         </div>
@@ -25,9 +25,9 @@ export default function VoiceAIPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Harness the Power of Voice AI</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Harness the Power of Voice Agent</h2>
               <p className="text-gray-300 mb-4">
-                Our Voice AI solutions leverage advanced natural language processing and machine learning to create intelligent voice-driven systems that understand, respond, and learn from interactions.
+                Our Voice Agent solutions leverage advanced natural language processing and machine learning to create intelligent voice-driven systems that understand, respond, and learn from interactions.
               </p>
               <p className="text-gray-300 mb-4">
                 Whether you're looking to automate customer service, enhance accessibility, or create voice-controlled applications, our solutions can be tailored to meet your specific business needs.
@@ -39,7 +39,7 @@ export default function VoiceAIPage() {
             <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
               <img 
                 src="/voice-ai-diagram.png" 
-                alt="Voice AI Diagram" 
+                alt="Voice Agent Diagram" 
                 className="w-full h-full object-contain"
               />
             </div>
@@ -51,9 +51,9 @@ export default function VoiceAIPage() {
       <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">See Voice AI in Action</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">See Voice Agent in Action</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Watch our demo videos to see how our Voice AI solutions can transform your business. Need more information? Click "Call Now" to speak with a specialist.
+              Watch our demo videos to see how our Voice Agent solutions can transform your business. Want to try it out? Click "Call Now" to speak to the agent.
             </p>
           </div>
           
@@ -66,7 +66,7 @@ export default function VoiceAIPage() {
             <VideoCard 
               title="Locksmith Job Booking Agent" 
               videoId="u86h6B4IU-8" 
-              description="See how our Voice AI system manages locksmith service bookings, efficiently handling customer requests and scheduling."
+              description="See how our Voice Agent system manages locksmith service bookings, efficiently handling customer requests and scheduling."
             />
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function VoiceAIPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Key Features</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our Voice AI solutions come packed with features designed to enhance your business operations.
+              Our Voice Agent solutions come packed with features designed to enhance your business operations.
             </p>
           </div>
           
@@ -91,7 +91,7 @@ export default function VoiceAIPage() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Natural Language Understanding</h3>
               <p className="text-gray-300">
-                Our AI understands context, intent, and nuance in human speech, enabling more natural interactions.
+                Our Agents understand context, intent, and nuance in human speech, enabling more natural interactions.
               </p>
             </div>
             
@@ -125,9 +125,9 @@ export default function VoiceAIPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Seamless Integration</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">System Integration</h3>
               <p className="text-gray-300">
-                Easily integrates with your existing systems, including CRM, ERP, and customer service platforms.
+                Our agents can be integrated with your existing scheduling and CRM systems.
               </p>
             </div>
             
@@ -149,9 +149,9 @@ export default function VoiceAIPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Enterprise-Grade Security</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Strong Security Features</h3>
               <p className="text-gray-300">
-                Robust security measures ensure your voice data is protected with encryption and compliance standards.
+              Advanced protection keeps your voice data safe through encryption and adherence to industry compliance standards.
               </p>
             </div>
           </div>
@@ -165,9 +165,9 @@ export default function VoiceAIPage() {
         backgroundPosition: 'bottom center'
       }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business with Voice AI?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business with Voice Agent?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Contact us today to discuss how our Voice AI solutions can help your business improve efficiency and customer satisfaction.
+            Contact us today to discuss how our Voice Agent solutions can help your business improve efficiency and customer satisfaction.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link 

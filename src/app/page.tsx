@@ -19,7 +19,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ServiceCard 
-              title="Voice AI Solutions" 
+              title="Voice Agent Solutions" 
               description="Implement cutting-edge voice recognition and natural language processing to enhance customer interactions and automate voice-driven processes."
               icon="voice"
               link="/services/voice-ai"

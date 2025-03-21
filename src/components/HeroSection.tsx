@@ -14,7 +14,7 @@ export default function HeroSection() {
             Transforming Businesses with Intelligent Automation
           </h1>
           <p className="text-xl md:text-2xl mb-8">
-            SuperNova Automations delivers cutting-edge Voice AI, Process Automation, and Custom Integration solutions to streamline your operations and boost productivity.
+          SuperNova Automations helps small businesses work smarter with powerful voice agents, process automation, and custom integration solutions—designed to save you time, reduce manual work, and increase productivity.
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Link 

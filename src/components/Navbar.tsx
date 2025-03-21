@@ -67,7 +67,7 @@ export default function Navbar() {
               >
                 <div className="py-1">
                   <Link href="/services/voice-ai" className="block px-4 py-2 text-sm text-gray-200 hover:bg-neutral-800">
-                    Voice AI Solutions
+                    Voice Agent Solutions
                   </Link>
                   <Link href="/services/process-automations" className="block px-4 py-2 text-sm text-gray-200 hover:bg-neutral-800">
                     Process Automations
@@ -129,7 +129,7 @@ export default function Navbar() {
             </Link>
             <div className="space-y-1 pl-4 border-l-2 border-indigo-500">
               <Link href="/services/voice-ai" className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-indigo-400 hover:bg-gray-800">
-                Voice AI Solutions
+                Voice Agent Solutions
               </Link>
               <Link href="/services/process-automations" className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-indigo-400 hover:bg-gray-800">
                 Process Automations
