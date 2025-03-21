@@ -26,7 +26,7 @@ export default function ContactPage() {
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
               <p className="text-gray-300 mb-8">
-                We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
+                We&apos;d love to hear from you. Fill out the form and we&apos;ll get back to you as soon as possible.
               </p>
               
               <div className="space-y-6">

@@ -1,5 +1,6 @@
 import VideoCard from '@/components/VideoCard';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function VoiceAIPage() {
   return (
@@ -30,16 +31,18 @@ export default function VoiceAIPage() {
                 Our Voice Agent solutions leverage advanced natural language processing and machine learning to create intelligent voice-driven systems that understand, respond, and learn from interactions.
               </p>
               <p className="text-gray-300 mb-4">
-                Whether you're looking to automate customer service, enhance accessibility, or create voice-controlled applications, our solutions can be tailored to meet your specific business needs.
+                Whether you&apos;re looking to automate customer service, enhance accessibility, or create voice-controlled applications, our solutions can be tailored to meet your specific business needs.
               </p>
               <p className="text-gray-300">
                 With SuperNova Automations, you get more than just technology – you get a partner committed to helping you achieve your business goals through innovative voice solutions.
               </p>
             </div>
             <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
-              <img 
+              <Image 
                 src="/voice-ai-diagram.png" 
                 alt="Voice Agent Diagram" 
+                width={500}
+                height={300}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -53,7 +56,7 @@ export default function VoiceAIPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">See Voice Agent in Action</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Watch our demo videos to see how our Voice Agent solutions can transform your business. Want to try it out? Click "Call Now" to speak to the agent.
+              Watch our demo videos to see how our Voice Agent solutions can transform your business. Want to try it out? Click &quot;Call Now&quot; to speak to the agent.
             </p>
           </div>
           

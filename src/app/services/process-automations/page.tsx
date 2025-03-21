@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProcessAutomationsPage() {
   return (
@@ -32,13 +33,15 @@ export default function ProcessAutomationsPage() {
                 By automating manual processes, your team can focus on high-value activities that drive innovation and growth, while reducing errors and improving consistency.
               </p>
               <p className="text-gray-300">
-                Whether you're looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
+                Whether you&apos;re looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
               </p>
             </div>
             <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
-              <img 
+              <Image 
                 src="/process-automation-diagram.png" 
                 alt="Process Automation Diagram" 
+                width={500}
+                height={300}
                 className="w-full h-full object-contain"
               />
             </div>

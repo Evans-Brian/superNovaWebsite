@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -14,7 +13,7 @@ export default function AboutPage() {
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">About SuperNova Automations</h1>
             <p className="text-xl max-w-3xl mx-auto">
-              We're a team of automation experts dedicated to helping businesses leverage the power of technology.
+              We&apos;re a team of automation experts dedicated to helping businesses leverage the power of technology.
             </p>
           </div>
         </div>
@@ -33,7 +32,7 @@ export default function AboutPage() {
                 Our founder, drawing on experience in the tech industry, saw that many businesses were struggling to keep up with the rapid pace of technological change. They were either overwhelmed by the complexity of new tools or unsure how to integrate them into their existing workflows.
               </p>
               <p className="text-gray-300">
-                That's where we come in. We bridge the gap between cutting-edge technology and practical business applications, delivering solutions that are both innovative and accessible.
+                That&apos;s where we come in. We bridge the gap between cutting-edge technology and practical business applications, delivering solutions that are both innovative and accessible.
               </p>
             </div>
             <div className="bg-gray-700 rounded-lg h-80 flex items-center justify-center">
@@ -74,7 +73,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Innovation</h3>
               <p className="text-gray-300">
-                We stay at the forefront of technology to bring innovative solutions to our clients' most challenging problems.
+                We stay at the forefront of technology to bring innovative solutions to our clients&apos; most challenging problems.
               </p>
             </div>
             
@@ -111,7 +110,7 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold text-white mb-1">Jane Doe</h3>
               <p className="text-indigo-400 mb-2">Founder & CEO</p>
               <p className="text-gray-300">
-                With over 15 years of experience in tech, Jane leads our company's vision and strategy.
+                With over 15 years of experience in tech, Jane leads our company&apos;s vision and strategy.
               </p>
             </div>
             
@@ -150,7 +149,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Work With Us?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Let's discuss how we can help your business leverage the power of automation.
+            Let&apos;s discuss how we can help your business leverage the power of automation.
           </p>
           <Link 
             href="/contact" 

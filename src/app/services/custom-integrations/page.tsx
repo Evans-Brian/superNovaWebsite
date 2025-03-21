@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function CustomIntegrationsPage() {
   return (
@@ -26,7 +27,7 @@ export default function CustomIntegrationsPage() {
             <div>
               <h2 className="text-3xl font-bold text-white mb-6">Seamless Connections for Your Business</h2>
               <p className="text-gray-300 mb-4">
-                In today's digital landscape, businesses rely on multiple systems and applications to operate efficiently. Our Custom Integration solutions bridge the gap between these systems, enabling seamless data flow and process automation.
+                In today&apos;s digital landscape, businesses rely on multiple systems and applications to operate efficiently. Our Custom Integration solutions bridge the gap between these systems, enabling seamless data flow and process automation.
               </p>
               <p className="text-gray-300 mb-4">
                 Whether you need to connect your CRM with your ERP, integrate e-commerce platforms with inventory management, or build custom APIs for third-party services, our team of integration experts can design and implement solutions that meet your specific requirements.
@@ -36,9 +37,11 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
-              <img 
+              <Image 
                 src="/custom-integrations-diagram.png" 
                 alt="Custom Integrations Diagram" 
+                width={500}
+                height={300}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -113,7 +116,7 @@ export default function CustomIntegrationsPage() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Custom Middleware</h3>
               <p className="text-gray-300">
-                Develop specialized middleware solutions that facilitate communication between systems that don't natively integrate with each other.
+                Develop specialized middleware solutions that facilitate communication between systems that don&apos;t natively integrate with each other.
               </p>
             </div>
             
@@ -138,7 +141,7 @@ export default function CustomIntegrationsPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Common Integration Scenarios</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We've helped businesses across various industries connect their systems and streamline their operations.
+              We&apos;ve helped businesses across various industries connect their systems and streamline their operations.
             </p>
           </div>
           
