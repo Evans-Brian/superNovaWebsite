@@ -13,12 +13,9 @@ interface Particle {
   color: string;
   // Previous positions for trail effect
   trail: Array<{x: number, y: number, opacity: number}>;
-  // Velocity for doppler effect
+  // Velocity
   vx: number;
   vy: number;
-  // Base color (before doppler shift)
-  baseColor: string;
-  baseHue: number;
 }
 
 export default function RippleSupernovaBg({ 
@@ -52,13 +49,8 @@ export default function RippleSupernovaBg({
       const x = Math.random() * width;
       const y = Math.random() * height;
       
-      // Extract hue from color for doppler shift calculations
       const colorIndex = Math.floor(Math.random() * colors.length);
-      const baseColor = colors[colorIndex];
-      
-      // Get base hue for doppler shift
-      // Parse the hex color to RGB, then convert to HSL to extract hue
-      const baseHue = getHueFromColor(baseColor);
+      const color = colors[colorIndex];
       
       particles.push({
         x: x,
@@ -68,9 +60,7 @@ export default function RippleSupernovaBg({
         size: Math.random() * 2.5 + 0.5,
         speed: Math.random() * 0.3 + 0.1,
         opacity: Math.random() * 0.5 + 0.3,
-        color: baseColor,
-        baseColor: baseColor,
-        baseHue: baseHue,
+        color: color,
         vx: 0,
         vy: 0,
         trail: []
@@ -165,54 +155,6 @@ export default function RippleSupernovaBg({
     };
   }, []);
   
-  // Helper function to extract hue from hex color
-  const getHueFromColor = (hexColor: string): number => {
-    // Default hue if conversion fails
-    let hue = 220;
-    
-    try {
-      // Convert hex to RGB
-      const r = parseInt(hexColor.slice(1, 3), 16) / 255;
-      const g = parseInt(hexColor.slice(3, 5), 16) / 255;
-      const b = parseInt(hexColor.slice(5, 7), 16) / 255;
-      
-      const max = Math.max(r, g, b);
-      const min = Math.min(r, g, b);
-      
-      // Calculate hue
-      if (max === min) {
-        hue = 0; // achromatic
-      } else {
-        const d = max - min;
-        switch (max) {
-          case r: hue = ((g - b) / d + (g < b ? 6 : 0)) * 60; break;
-          case g: hue = ((b - r) / d + 2) * 60; break;
-          case b: hue = ((r - g) / d + 4) * 60; break;
-        }
-      }
-    } catch (e) {
-      // If conversion fails, use default
-    }
-    
-    return hue;
-  };
-  
-  // Apply doppler shift effect to color
-  const applyDopplerShift = useCallback((baseHue: number, velocityFactor: number): string => {
-    // Calculate shifted hue
-    // Positive velocity (moving away) shifts toward red (lower frequency)
-    // Negative velocity (moving toward) shifts toward blue (higher frequency)
-    
-    // Scale the effect for visual impact
-    const shiftAmount = velocityFactor * 30; // Adjust for desired intensity
-    
-    // Apply shift and keep in valid hue range (0-360)
-    let shiftedHue = (baseHue - shiftAmount) % 360;
-    if (shiftedHue < 0) shiftedHue += 360;
-    
-    // Return HSL color with shifted hue
-    return `hsl(${shiftedHue}, 100%, 70%)`;
-  }, []);
   
   // Get the time warp effect parameters
   const getDistortionFactors = useCallback((x: number, y: number, mouseX: number, mouseY: number) => {
@@ -338,8 +280,8 @@ export default function RippleSupernovaBg({
         }
       }
       
-      // Update trails max length
-      const MAX_TRAIL_LENGTH = 5;
+      // Update trails max length - reduced by 70%
+      const MAX_TRAIL_LENGTH = 2; // Was 5, now ~30% (1.5) rounded up to 2
       
       // Update and draw particles
       particlesRef.current.forEach(particle => {
@@ -444,7 +386,8 @@ export default function RippleSupernovaBg({
           trailGradient.addColorStop(1, `${particle.color.replace(')', ', 0.4)')}`);
           
           ctx.strokeStyle = trailGradient;
-          ctx.lineWidth = particle.size * 0.7;
+          // Reduced by 70%
+          ctx.lineWidth = particle.size * 0.21; // 0.7 * 0.3 = 0.21
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
           ctx.stroke();
@@ -470,23 +413,7 @@ export default function RippleSupernovaBg({
             const stretchFactor = strength * 3;
             const stretchedSize = particle.size * (1 + stretchFactor);
             
-            // Calculate doppler shift
-            // Get normalized direction vectors
-            const { normalizedDx, normalizedDy } = getDistortionFactors(
-              particle.x, particle.y, mousePos.current.x, mousePos.current.y
-            );
-            
-            // Determine if particle is moving toward or away from observer
-            const velocityMagnitude = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
-            const dotProduct = particle.vx * normalizedDx + particle.vy * normalizedDy;
-            
-            // Positive means moving away (red shift), negative means moving toward (blue shift)
-            const velocityFactor = dotProduct * velocityMagnitude * 10; // Scale for visual effect
-            
-            // Apply doppler shift to color
-            const shiftedColor = applyDopplerShift(particle.baseHue, velocityFactor);
-            
-            // Create a gradient for the stretched particle
+            // Create a gradient for the stretched particle - no doppler effect
             const gradient = ctx.createLinearGradient(
               finalX - Math.cos(stretchDirection) * stretchedSize,
               finalY - Math.sin(stretchDirection) * stretchedSize,
@@ -495,7 +422,7 @@ export default function RippleSupernovaBg({
             );
             
             gradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
-            gradient.addColorStop(0.5, shiftedColor);
+            gradient.addColorStop(0.5, particle.color);
             gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
             
             // Draw the stretched particle
