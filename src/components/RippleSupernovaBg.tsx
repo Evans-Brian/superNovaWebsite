@@ -29,8 +29,10 @@ export default function RippleSupernovaBg({
   const particlesRef = useRef<Particle[]>([]);
   const mousePos = useRef({ x: -1000, y: -1000 }); // Start far off-screen
   const isMouseActiveRef = useRef(false);
+  const gridOpacityRef = useRef(0); // Add opacity reference for grid fade effect
   const animationFrameId = useRef<number | undefined>(undefined);
   const gradientRef = useRef<CanvasGradient | null>(null);
+  const lastTimeRef = useRef(0); // For animation timing
   
   // Initialize particles
   const initParticles = useCallback(() => {
@@ -202,7 +204,7 @@ export default function RippleSupernovaBg({
   
   // Animation loop
   useEffect(() => {
-    const draw = () => {
+    const draw = (timestamp: number) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       
@@ -210,6 +212,23 @@ export default function RippleSupernovaBg({
       if (!ctx) return;
       
       const { width, height } = canvas;
+      
+      // Calculate delta time for animations
+      const deltaTime = timestamp - (lastTimeRef.current || timestamp);
+      lastTimeRef.current = timestamp;
+      
+      // Update grid opacity with smooth transition
+      // For a 2 second fade duration: 1/2000ms = 0.0005 opacity per ms
+      // At 60fps, deltaTime ≈ 16.67ms, so fadeSpeed ≈ 0.0083 (0.0005 * 16.67)
+      const fadeSpeed = 0.0005; // Speed of fade transition (opacity per ms for 2 second duration)
+      
+      if (isMouseActiveRef.current) {
+        // Fade in grid when mouse is active
+        gridOpacityRef.current = Math.min(1, gridOpacityRef.current + fadeSpeed * deltaTime);
+      } else {
+        // Fade out grid when mouse is inactive
+        gridOpacityRef.current = Math.max(0, gridOpacityRef.current - fadeSpeed * deltaTime);
+      }
       
       // Create supernova gradient if not cached
       if (!gradientRef.current) {
@@ -234,13 +253,13 @@ export default function RippleSupernovaBg({
       ctx.fillStyle = gradientRef.current;
       ctx.fillRect(0, 0, width, height);
       
-      // Time warp background grid effect (subtle)
-      if (isMouseActiveRef.current) {
+      // Only draw grid if it has some opacity
+      if (gridOpacityRef.current > 0.01) {
         const gridSize = 50;
         const gridSpacing = width / gridSize;
         
-        // Semi-transparent grid lines
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        // Set grid line opacity based on fade state
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * gridOpacityRef.current})`;
         ctx.lineWidth = 0.5;
         
         // Draw warped grid
