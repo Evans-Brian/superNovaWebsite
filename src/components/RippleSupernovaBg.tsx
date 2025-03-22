@@ -101,19 +101,34 @@ export default function RippleSupernovaBg({
   
   // Handle mouse movement
   useEffect(() => {
+    // Create a function to check if the mouse is near the navbar
+    const isMouseNearNavbar = (y: number): boolean => {
+      // Top area where navbar is located (first ~80px)
+      return y < 80;
+    };
+    
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        mousePos.current = {
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        };
-        isMouseActiveRef.current = true;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        // Only activate animation if mouse is NOT near the navbar
+        if (!isMouseNearNavbar(e.clientY)) {
+          mousePos.current = {
+            x: mouseX,
+            y: mouseY
+          };
+          isMouseActiveRef.current = true;
+        } else {
+          // If mouse is near navbar, deactivate the effect
+          isMouseActiveRef.current = false;
+        }
       }
     };
     
     const handleMouseLeave = () => {
-      // Slowly fade out the effect by moving the mouse position far away
+      // Fade out the effect
       isMouseActiveRef.current = false;
     };
     
@@ -121,15 +136,19 @@ export default function RippleSupernovaBg({
       if (containerRef.current && e.touches.length > 0) {
         const rect = containerRef.current.getBoundingClientRect();
         const touch = e.touches[0];
+        const touchY = touch.clientY;
         
-        mousePos.current = {
-          x: touch.clientX - rect.left,
-          y: touch.clientY - rect.top
-        };
-        isMouseActiveRef.current = true;
-        
-        // Prevent scrolling while interacting with the canvas
-        e.preventDefault();
+        // Only activate for touches not near the navbar
+        if (!isMouseNearNavbar(touchY)) {
+          mousePos.current = {
+            x: touch.clientX - rect.left,
+            y: touch.clientY - rect.top
+          };
+          isMouseActiveRef.current = true;
+          
+          // Prevent scrolling while interacting with the canvas
+          e.preventDefault();
+        }
       }
     };
     
@@ -477,18 +496,19 @@ export default function RippleSupernovaBg({
     <div 
       ref={containerRef}
       className="relative w-full h-full overflow-hidden"
+      style={{ pointerEvents: 'none', zIndex: 1 }}
     >
-      {/* Interactive Canvas */}
+      {/* Interactive Canvas - pointer-events-none prevents it from capturing mouse events */}
       <canvas 
         ref={canvasRef}
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
       />
       
       {/* Subtle darkening overlay */}
-      <div className="absolute inset-0 bg-black opacity-30"></div>
+      <div className="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
       
-      {/* Content */}
-      <div className="relative z-10 w-full h-full">
+      {/* Content - restore pointer events for children */}
+      <div className="relative z-10 w-full h-full" style={{ pointerEvents: 'auto' }}>
         {children}
       </div>
     </div>
