@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
+import BenefitsWrapper from '@/components/BenefitsWrapper';
+import ApproachWrapper from '@/components/ApproachWrapper';
 
 export default function CustomIntegrationsPage() {
   return (
@@ -59,8 +62,8 @@ export default function CustomIntegrationsPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+          <KeyFeaturesWrapper columns={3}>
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -72,7 +75,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -84,7 +87,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -96,7 +99,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -108,7 +111,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -120,7 +123,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
@@ -131,7 +134,7 @@ export default function CustomIntegrationsPage() {
                 Connect IoT devices and sensors with your business systems to enable data collection, monitoring, and automated responses.
               </p>
             </div>
-          </div>
+          </KeyFeaturesWrapper>
         </div>
       </section>
 
@@ -145,7 +148,7 @@ export default function CustomIntegrationsPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <BenefitsWrapper columns={2}>
             <div className="flex items-start">
               <div className="flex-shrink-0">
                 <div className="flex items-center justify-center w-12 h-12 rounded-md text-white" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
@@ -241,7 +244,7 @@ export default function CustomIntegrationsPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </BenefitsWrapper>
         </div>
       </section>
 
@@ -255,8 +258,8 @@ export default function CustomIntegrationsPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+          <ApproachWrapper columns={3}>
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">1</span>
               </div>
@@ -266,7 +269,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">2</span>
               </div>
@@ -276,7 +279,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">3</span>
               </div>
@@ -286,7 +289,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">4</span>
               </div>
@@ -296,7 +299,7 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">5</span>
               </div>
@@ -306,12 +309,16 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
             
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">6</span>
               </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Continuous Improvement</h3>
+              <p className="text-gray-300">
+                We continuously evaluate and enhance your integration solution to adapt to your evolving business needs and emerging technologies.
+              </p>
             </div>
-          </div>
+          </ApproachWrapper>
         </div>
       </section>
 
