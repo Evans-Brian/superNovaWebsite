@@ -1,10 +1,22 @@
 'use client';
 
-import { useState } from 'react';
-import NebulaDepthCard from './NebulaDepthCard';
-import CosmicPortalCard from './CosmicPortalCard';
-import StellarLifecycleCard from './StellarLifecycleCard';
+import { useState, Suspense, lazy } from 'react';
 import ServiceCard from './ServiceCard';
+import ErrorBoundary from './ErrorBoundary';
+
+// Dynamic imports with error boundaries
+const NebulaDepthCard = lazy(() => import('./NebulaDepthCard'));
+const CosmicPortalCard = lazy(() => import('./CosmicPortalCard'));
+const StellarLifecycleCard = lazy(() => import('./StellarLifecycleCard'));
+
+// Fallback component in case any of the card components fail
+const FallbackCard = ({ title, description, icon, link }: any) => (
+  <div className="p-6 h-full bg-gray-800 rounded-lg border border-purple-500">
+    <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+    <p className="text-gray-300">{description}</p>
+    <p className="mt-4 text-purple-400">Component failed to load</p>
+  </div>
+);
 
 export default function CompareDesigns() {
   const [activeDesign, setActiveDesign] = useState<string>('all');
@@ -117,13 +129,16 @@ export default function CompareDesigns() {
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Nebula Depth Cards</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {serviceData.map((service, index) => (
-                <NebulaDepthCard 
-                  key={`nebula-${index}`}
-                  title={service.title}
-                  description={service.description}
-                  icon={service.icon}
-                  link={service.link}
-                />
+                <ErrorBoundary key={`nebula-${index}`} fallback={<FallbackCard {...service} />}>
+                  <Suspense fallback={<FallbackCard {...service} />}>
+                    <NebulaDepthCard 
+                      title={service.title}
+                      description={service.description}
+                      icon={service.icon}
+                      link={service.link}
+                    />
+                  </Suspense>
+                </ErrorBoundary>
               ))}
             </div>
             <div className="mt-6 text-center">
@@ -140,13 +155,16 @@ export default function CompareDesigns() {
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Cosmic Portal Cards</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {serviceData.map((service, index) => (
-                <CosmicPortalCard 
-                  key={`cosmic-${index}`}
-                  title={service.title}
-                  description={service.description}
-                  icon={service.icon}
-                  link={service.link}
-                />
+                <ErrorBoundary key={`cosmic-${index}`} fallback={<FallbackCard {...service} />}>
+                  <Suspense fallback={<FallbackCard {...service} />}>
+                    <CosmicPortalCard 
+                      title={service.title}
+                      description={service.description}
+                      icon={service.icon}
+                      link={service.link}
+                    />
+                  </Suspense>
+                </ErrorBoundary>
               ))}
             </div>
             <div className="mt-6 text-center">
@@ -163,13 +181,16 @@ export default function CompareDesigns() {
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Stellar Lifecycle Cards</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {serviceData.map((service, index) => (
-                <StellarLifecycleCard 
-                  key={`stellar-${index}`}
-                  title={service.title}
-                  description={service.description}
-                  icon={service.icon}
-                  link={service.link}
-                />
+                <ErrorBoundary key={`stellar-${index}`} fallback={<FallbackCard {...service} />}>
+                  <Suspense fallback={<FallbackCard {...service} />}>
+                    <StellarLifecycleCard 
+                      title={service.title}
+                      description={service.description}
+                      icon={service.icon}
+                      link={service.link}
+                    />
+                  </Suspense>
+                </ErrorBoundary>
               ))}
             </div>
             <div className="mt-6 text-center">

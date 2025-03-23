@@ -34,8 +34,9 @@ export default function CosmicPortalCard({ title, description, icon, link }: Cos
     time: 0
   });
 
-  // Initialize Three.js scene
+  // Initialize Three.js scene - wrapped in try-catch for error handling
   useEffect(() => {
+    try {
     if (!canvasRef.current || !cardRef.current) return;
 
     const canvas = canvasRef.current;
@@ -220,11 +221,15 @@ export default function CosmicPortalCard({ title, description, icon, link }: Cos
       if (sceneRef.current.material) sceneRef.current.material.dispose();
       if (sceneRef.current.renderer) sceneRef.current.renderer.dispose();
     };
+    } catch (error) {
+      console.error("Error initializing Three.js scene:", error);
+    }
   }, []);
   
-  // Animation function
+  // Animation function - wrapped in try-catch for error handling
   const animate = () => {
-    if (!sceneRef.current.scene || !sceneRef.current.camera || !sceneRef.current.renderer) return;
+    try {
+      if (!sceneRef.current.scene || !sceneRef.current.camera || !sceneRef.current.renderer) return;
     
     sceneRef.current.time += 0.01;
     
@@ -237,8 +242,15 @@ export default function CosmicPortalCard({ title, description, icon, link }: Cos
     // Render scene
     sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
     
-    // Continue animation loop
-    animationRef.current = requestAnimationFrame(animate);
+      // Continue animation loop
+      animationRef.current = requestAnimationFrame(animate);
+    } catch (error) {
+      console.error("Error in animation loop:", error);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+    }
   };
   
   // Start animation
