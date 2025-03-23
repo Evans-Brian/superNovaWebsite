@@ -1,7 +1,7 @@
 'use client';
 
 import HeroSection from "@/components/HeroSection";
-import ServiceCard from "@/components/ServiceCard";
+import NebulaDepthCard from "@/components/NebulaDepthCard";
 import FeatureCardGrid from "@/components/FeatureCardGrid";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -22,19 +22,19 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ServiceCard 
+            <NebulaDepthCard 
               title="Voice Agent Solutions" 
               description="Implement cutting-edge voice recognition and natural language processing to enhance customer interactions and automate voice-driven processes."
               icon="voice"
               link="/services/voice-ai"
             />
-            <ServiceCard 
+            <NebulaDepthCard 
               title="Process Automations" 
               description="Streamline your business operations with intelligent workflow automation that reduces manual tasks and improves efficiency."
               icon="process"
               link="/services/process-automations"
             />
-            <ServiceCard 
+            <NebulaDepthCard 
               title="Custom Integrations" 
               description="Connect your existing systems and software with seamless integrations tailored to your specific business requirements."
               icon="integration"
