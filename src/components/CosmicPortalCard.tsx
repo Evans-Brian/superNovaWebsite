@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, MouseEvent } from 'react';
 import * as THREE from 'three';
 
 interface CosmicPortalCardProps {
@@ -224,4 +224,140 @@ export default function CosmicPortalCard({ title, description, icon, link }: Cos
   
   // Animation function
   const animate = () => {
-    if (!scene
+    if (!sceneRef.current.scene || !sceneRef.current.camera || !sceneRef.current.renderer) return;
+    
+    sceneRef.current.time += 0.01;
+    
+    // Update uniforms
+    if (sceneRef.current.material?.uniforms) {
+      sceneRef.current.material.uniforms.time.value = sceneRef.current.time;
+      sceneRef.current.material.uniforms.intensity.value = isHovered ? 1.0 : 0.5;
+    }
+    
+    // Render scene
+    sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
+    
+    // Continue animation loop
+    animationRef.current = requestAnimationFrame(animate);
+  };
+  
+  // Start animation
+  const startAnimation = () => {
+    if (animationRef.current === null) {
+      animationRef.current = requestAnimationFrame(animate);
+    }
+  };
+  
+  // Stop animation
+  const stopAnimation = () => {
+    if (animationRef.current !== null) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  return (
+    <Link 
+      href={link}
+      className="block h-full"
+    >
+      <div 
+        ref={cardRef}
+        className="relative h-full overflow-hidden rounded-lg transition-all duration-300 cursor-pointer bg-neutral-900"
+        style={{
+          boxShadow: isHovered 
+            ? '0 0 25px rgba(102, 57, 218, 0.6), inset 0 0 15px rgba(102, 57, 218, 0.4)' 
+            : '0 0 15px rgba(102, 57, 218, 0.3), inset 0 0 5px rgba(102, 57, 218, 0.2)',
+          transition: 'all 0.5s ease'
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Portal canvas background */}
+        <canvas 
+          ref={canvasRef}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            opacity: 0.6,
+            transition: 'opacity 0.5s ease',
+            filter: `blur(${isHovered ? '0px' : '1px'})`
+          }}
+        />
+        
+        {/* Event horizon effect - edge glow */}
+        <div 
+          className="absolute inset-0 rounded-lg pointer-events-none"
+          style={{
+            boxShadow: 'inset 0 0 25px rgba(102, 57, 218, 0.5)',
+            opacity: isHovered ? 0.8 : 0.3,
+            transition: 'opacity 0.5s ease'
+          }}
+        />
+        
+        {/* Content container with glass effect */}
+        <div 
+          className="absolute inset-0 rounded-lg overflow-hidden"
+          style={{
+            background: 'rgba(0, 0, 0, 0.4)',
+            backdropFilter: 'blur(4px)',
+            opacity: isHovered ? 0.8 : 1,
+            transition: 'opacity 0.5s ease'
+          }}
+        >
+          {/* Actual content */}
+          <div className="relative p-6 h-full flex flex-col z-10">
+            <div 
+              className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4 relative"
+              style={{ 
+                backgroundColor: 'rgb(102, 57, 218)',
+                boxShadow: isHovered 
+                  ? '0 0 15px rgba(102, 57, 218, 0.8)' 
+                  : '0 0 5px rgba(102, 57, 218, 0.4)',
+                transition: 'box-shadow 0.5s ease'
+              }}
+            >
+              {icon === 'voice' && (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+              )}
+              {icon === 'process' && (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              )}
+              {icon === 'integration' && (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                </svg>
+              )}
+            </div>
+            
+            <h3 
+              className="text-xl font-semibold text-white mb-2"
+              style={{ 
+                textShadow: isHovered 
+                  ? '0 0 8px rgba(255,255,255,0.5)' 
+                  : '0 0 5px rgba(255,255,255,0.3)'
+              }}
+            >
+              {title}
+            </h3>
+            
+            <p className="text-gray-300 relative">
+              {description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
