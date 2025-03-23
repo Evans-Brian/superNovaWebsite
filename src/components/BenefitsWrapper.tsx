@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import ConstellationNetwork from './ConstellationNetwork';
 
 interface BenefitWrapperProps {
@@ -39,7 +39,12 @@ interface BenefitsWrapperProps {
 
 export default function BenefitsWrapper({ children, columns = 2 }: BenefitsWrapperProps) {
   const childrenArray = React.Children.toArray(children);
-  const cardRefs = childrenArray.map(() => useRef<HTMLDivElement>(null));
+  
+  // Create refs array for the wrapper divs
+  const cardRefs = React.useMemo(() => {
+    return Array(childrenArray.length).fill(null).map(() => React.createRef<HTMLDivElement>());
+  }, [childrenArray.length]);
+  
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   
   return (

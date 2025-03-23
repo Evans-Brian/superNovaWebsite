@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface ApproachStepWrapperProps {
@@ -46,7 +46,11 @@ interface ApproachWrapperProps {
 
 export default function ApproachWrapper({ children, columns = 3 }: ApproachWrapperProps) {
   const childrenArray = React.Children.toArray(children);
-  const cardRefs = childrenArray.map(() => useRef<HTMLDivElement>(null));
+  
+  // Create refs array using useMemo to avoid React Hook violations
+  const cardRefs = React.useMemo(() => {
+    return Array(childrenArray.length).fill(null).map(() => React.createRef<HTMLDivElement>());
+  }, [childrenArray.length]);
   
   return (
     <div className="relative">

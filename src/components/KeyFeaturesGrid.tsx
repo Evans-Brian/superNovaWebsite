@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import ConstellationNetwork from './ConstellationNetwork';
 
 interface KeyFeaturesGridProps {
@@ -9,9 +9,13 @@ interface KeyFeaturesGridProps {
 }
 
 export default function KeyFeaturesGrid({ children, columns = 3 }: KeyFeaturesGridProps) {
-  // Create individual refs for each feature card
+  // Get the children array
   const childrenArray = React.Children.toArray(children);
-  const cardRefs = childrenArray.map(() => useRef<HTMLDivElement>(null));
+  
+  // Create refs array for the wrapper divs
+  const cardRefs = React.useMemo(() => {
+    return Array(childrenArray.length).fill(null).map(() => React.createRef<HTMLDivElement>());
+  }, [childrenArray.length]);
   
   // Track which card is active (being hovered)
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
@@ -26,17 +30,18 @@ export default function KeyFeaturesGrid({ children, columns = 3 }: KeyFeaturesGr
       
       {/* Feature cards grid */}
       <div className={gridColsClass}>
-        {React.Children.map(children, (child, index) => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child, {
-              key: index,
-              ref: cardRefs[index],
-              onMouseEnter: () => setActiveCardIndex(index),
-              onMouseLeave: () => setActiveCardIndex(null)
-            });
-          }
-          return child;
-        })}
+        {childrenArray.map((child, index) => (
+          <div 
+            key={index}
+            ref={cardRefs[index]}
+            className="Bordered Service Cards"
+            data-card-type="Bordered Service Cards"
+            onMouseEnter={() => setActiveCardIndex(index)}
+            onMouseLeave={() => setActiveCardIndex(null)}
+          >
+            {child}
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import HeroSection from "@/components/HeroSection";
 import NebulaDepthCard from "@/components/NebulaDepthCard";
 import FeatureCardGrid from "@/components/FeatureCardGrid";
 import Link from "next/link";
-import { useRef, useState } from "react";
 
 export default function Home() {
   return (
