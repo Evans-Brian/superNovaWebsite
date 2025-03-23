@@ -328,9 +328,7 @@ export default function RippleSupernovaBg({
           particle.x, particle.y, mousePos.current.x, mousePos.current.y
         );
         
-        // Save velocities from previous frame for color shifting
-        const prevVx = particle.vx;
-        const prevVy = particle.vy;
+        // No need to save previous velocities since they aren't used
         
         // Only add to trail if particle is affected by warp
         if (strength > 0.1 && isMouseActiveRef.current) {

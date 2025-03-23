@@ -47,7 +47,11 @@ interface KeyFeaturesWrapperProps {
 
 export default function KeyFeaturesWrapper({ children, columns = 3 }: KeyFeaturesWrapperProps) {
   const childrenArray = React.Children.toArray(children);
-  const cardRefs = childrenArray.map(() => useRef<HTMLDivElement>(null));
+  
+  // Use useMemo to create refs array to avoid rules of hooks violation
+  const cardRefs = React.useMemo(() => {
+    return Array(childrenArray.length).fill(null).map(() => React.createRef<HTMLDivElement>());
+  }, [childrenArray.length]);
   
   return (
     <div className="relative">

@@ -1,55 +1,52 @@
 # Service Cards Summary
 
-This document provides a reference for all service card components used throughout the website, categorized by their assigned types.
+This document summarizes the different types of service cards used throughout the SuperNova Automations website, organized by their type.
 
 ## Our Services Service Cards
 
-These cards are used in the "Our Services" section on the hero page.
+These cards are found under the "Our Services" section on the hero page:
 
-- **Component:** `src/components/NebulaDepthCard.tsx`
-- **Usage:** Homepage "Our Services" section
-- **Visual Style:** Depth-based cards with particle effects and 3D interactions
+- `src/components/NebulaDepthCard.tsx` - Main service cards with 3D depth effect and particle animations
 
 ## Bordered Service Cards
 
-These cards are used in various sections throughout the site including the "Why Choose SuperNova Automations" on the hero page, "Key Features" on the voice page, "Common Use Cases" on the Process Automations page, and "Integration Types" and "Our Integration Approach" on the Custom Integration Page.
+These cards feature a glowing border effect and are found in the following sections:
 
-- **Component:** `src/components/FeatureCard.tsx`
-  - **Usage:** Homepage "Why Choose SuperNova Automations" section
-  - **Visual Style:** Center-aligned cards with circular icons, orbit particles, and interactive glowing border effect
+1. **Why Choose SuperNova Automations** (hero page)
+   - `src/components/FeatureCard.tsx` - Feature cards with glowing border
 
-- **Component:** `src/components/KeyFeaturesWrapper.tsx` (using CardWrapper)
-  - **Usage:** Voice AI page "Key Features" section, Process Automations page "Common Use Cases" section, Custom Integrations page "Integration Types" section
-  - **Visual Style:** Standard cards with interactive glowing border effect (no constellation network connections)
+2. **Key Features** (voice page)
+   - `src/components/KeyFeaturesWrapper.tsx` - Wrapper component for Key Features cards
 
-- **Component:** `src/components/ApproachWrapper.tsx` (using ApproachStepWrapper)
-  - **Usage:** Custom Integrations page "Our Integration Approach" section
-  - **Visual Style:** Cards with numbered steps and interactive glowing border effect (no constellation network connections)
+3. **Common Use Cases** (Process Automations page)
+   - `src/components/ApproachWrapper.tsx` - Approach/Use Case cards with glowing border
 
-## Constellation Effect
-
-These cards feature a constellation network that connects cards, highlighting relationships when hovering.
-
-- **Component:** `src/components/BenefitsWrapper.tsx` (using BenefitWrapper)
-  - **Usage:** Process Automations page "Benefits of Process Automation" section, Custom Integrations page "Common Integration Scenarios" section
-  - **Visual Style:** Flex cards with icon on left and content on right, connected by constellation network (without glowing borders)
+4. **Integration Types and Our Integration Approach** (Custom Integration Page)
+   - `src/components/BenefitsWrapper.tsx` - Benefits/Integration cards with glowing border
 
 ## Other Service Cards
 
-These cards are used in various other sections of the website not covered by the categories above.
+These cards have different styles without the constellation effect or bordered style:
 
-- **Component:** `src/components/ServiceCard.tsx`
-  - **Usage:** General-purpose service cards used in other sections
-  - **Visual Style:** Cards with glowing edges and proximity-based lighting effects
+- `src/components/ServiceCard.tsx` - Generic service cards
+- `src/components/VideoCard.tsx` - Cards for video content
+- `src/components/StellarLifecycleCard.tsx` - Cards with lifecycle information
+- `src/components/CosmicPortalCard.tsx` - Portal-style cards with different visual effect
 
-## Tag Implementation
+## Technical Implementation Details
 
-All service cards have been tagged with:
+### Constellation Effect
+- Implemented in `src/components/ConstellationNetwork.tsx`
+- Features smooth 2-second fade-in/fade-out transitions for connection lines
+- Enhanced visual effect with higher contrast between active connections (0.6 opacity) and inactive ones (0.03 opacity)
+- Adds particle flow from active cards to connected nodes
 
-1. A CSS class name matching their card type
-2. A data attribute `data-card-type` with the value matching their card type
+### Glowing Border Effect
+- Implemented in `components/ui/glowing-effect.tsx`
+- Creates an interactive glowing border that responds to mouse movement
+- Used by all "Bordered Service Cards"
 
-This allows for:
-- Easy selection via CSS using class names
-- Programmatic selection via JavaScript using data attributes
-- Potential styling variations based on card type
+### 3D Depth Effect
+- Implemented in `src/components/NebulaDepthCard.tsx`
+- Creates a parallax 3D effect with multiple layers on mouse hover
+- Used by "Our Services Service Cards"

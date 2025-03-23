@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 
 interface Point {
   x: number;
@@ -47,69 +47,17 @@ export default function ConstellationNetwork({ cardRefs, activeCardIndex }: Cons
   const previousActiveIndex = useRef<number | null>(null);
 
   // Generate a random color within our theme palette
-  const getRandomColor = () => {
+  const getRandomColor = useCallback(() => {
     const colors = [
       'rgba(102, 57, 218, 0.8)', // Purple
       'rgba(66, 153, 225, 0.8)', // Blue
       'rgba(236, 72, 153, 0.8)',  // Pink
     ];
     return colors[Math.floor(Math.random() * colors.length)];
-  };
-
-  // Initialize canvas and resize handler
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current && canvasRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect();
-        setDimensions({ width, height });
-        canvasRef.current.width = width;
-        canvasRef.current.height = height;
-      }
-    };
-
-    // Initial setup
-    updateDimensions();
-
-    // Handle resize
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Calculate the center points of each card
-  useEffect(() => {
-    const updateCardCenters = () => {
-      const newCardCenters: Point[] = [];
-      const containerRect = containerRef.current?.getBoundingClientRect();
-      
-      if (!containerRect) return;
-      
-      cardRefs.forEach(ref => {
-        if (ref.current) {
-          const rect = ref.current.getBoundingClientRect();
-          newCardCenters.push({
-            x: rect.left + rect.width / 2 - containerRect.left,
-            y: rect.top + rect.height / 2 - containerRect.top
-          });
-        }
-      });
-      
-      cardCenters.current = newCardCenters;
-      
-      // Initialize particles when card centers are calculated
-      if (newCardCenters.length > 0 && particles.current.length === 0) {
-        initializeParticles();
-      }
-    };
-    
-    updateCardCenters();
-    
-    // Update centers when window is resized
-    window.addEventListener('resize', updateCardCenters);
-    return () => window.removeEventListener('resize', updateCardCenters);
-  }, [cardRefs]);
-
   // Initialize particles
-  const initializeParticles = () => {
+  const initializeParticles = useCallback(() => {
     const centers = cardCenters.current;
     if (centers.length < 2) return;
     
@@ -151,10 +99,43 @@ export default function ConstellationNetwork({ cardRefs, activeCardIndex }: Cons
     }
     
     particles.current = newParticles;
-  };
+  }, [getRandomColor]);
+
+  // Calculate the center points of each card
+  useEffect(() => {
+    const updateCardCenters = () => {
+      const newCardCenters: Point[] = [];
+      const containerRect = containerRef.current?.getBoundingClientRect();
+      
+      if (!containerRect) return;
+      
+      cardRefs.forEach(ref => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          newCardCenters.push({
+            x: rect.left + rect.width / 2 - containerRect.left,
+            y: rect.top + rect.height / 2 - containerRect.top
+          });
+        }
+      });
+      
+      cardCenters.current = newCardCenters;
+      
+      // Initialize particles when card centers are calculated
+      if (newCardCenters.length > 0 && particles.current.length === 0) {
+        initializeParticles();
+      }
+    };
+    
+    updateCardCenters();
+    
+    // Update centers when window is resized
+    window.addEventListener('resize', updateCardCenters);
+    return () => window.removeEventListener('resize', updateCardCenters);
+  }, [cardRefs, initializeParticles]);
 
   // Generate random particles from a random node
-  const generateRandomParticles = (timestamp: number) => {
+  const generateRandomParticles = useCallback((timestamp: number) => {
     if (timestamp < nextRandomParticleTime.current) return;
     
     // Set next particle generation time (more infrequent - doubled time)
@@ -191,10 +172,10 @@ export default function ConstellationNetwork({ cardRefs, activeCardIndex }: Cons
         timeToLive: 1 // Will complete one full journey
       });
     }
-  };
+  }, [getRandomColor]);
 
   // Generate particles from active card
-  const generateActiveCardParticles = (timestamp: number, activeIndex: number) => {
+  const generateActiveCardParticles = useCallback((timestamp: number, activeIndex: number) => {
     // Only generate a new particle every 200-400ms
     if (Math.random() > 0.05) return; // About 5% chance per frame (at 60fps)
     
@@ -226,161 +207,10 @@ export default function ConstellationNetwork({ cardRefs, activeCardIndex }: Cons
       isRandomParticle: false,
       timeToLive: 1 // Will complete one full journey
     });
-  };
-
-  // Main animation loop
-  useEffect(() => {
-    if (!canvasRef.current || cardCenters.current.length < 2) return;
-
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const animate = (timestamp: number) => {
-      if (!lastUpdateTime.current) {
-        lastUpdateTime.current = timestamp;
-      }
-      
-      const deltaTime = timestamp - lastUpdateTime.current;
-      lastUpdateTime.current = timestamp;
-      
-      // Clear canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Draw connections
-      drawConnections(ctx, activeCardIndex);
-      
-      // Generate random particles occasionally
-      generateRandomParticles(timestamp);
-      
-      // Generate particles from active card if there is one
-      if (activeCardIndex !== null) {
-        generateActiveCardParticles(timestamp, activeCardIndex);
-      }
-      
-      // Update and draw particles
-      updateParticles(deltaTime / 1000, activeCardIndex);
-      drawParticles(ctx);
-      
-      // Continue animation loop
-      animationFrameId.current = requestAnimationFrame(animate);
-    };
-    
-    // Start animation
-    animationFrameId.current = requestAnimationFrame(animate);
-    
-    // Cleanup
-    return () => {
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current);
-      }
-    };
-  }, [dimensions, activeCardIndex]);
-
-  // Initialize connections
-  useEffect(() => {
-    // Function to initialize connections based on current card centers
-    const initializeConnections = () => {
-      if (cardCenters.current.length < 2) return;
-      
-      const newConnections: Connection[] = [];
-      const centers = cardCenters.current;
-      
-      for (let i = 0; i < centers.length; i++) {
-        for (let j = i + 1; j < centers.length; j++) {
-          // Default opacity for all connections is 0.15
-          newConnections.push({
-            source: i,
-            target: j,
-            currentOpacity: 0.15,
-            targetOpacity: 0.15
-          });
-        }
-      }
-      
-      connections.current = newConnections;
-    };
-    
-    // Initialize connections when component mounts and when cardRefs changes
-    initializeConnections();
-    
-    // Adding cardRefs as a dependency since that's what determines the card centers
-  }, [cardRefs]);
-  
-  // Update target opacities when active card changes
-  useEffect(() => {
-    if (connections.current.length === 0) return;
-    
-    connections.current.forEach(connection => {
-      // Default opacity
-      let newTargetOpacity = 0.15;
-      
-      if (activeCardIndex !== null) {
-        // If one of the connected cards is active, make the line more visible
-        if (connection.source === activeCardIndex || connection.target === activeCardIndex) {
-          newTargetOpacity = 0.6; // Increased for more dramatic effect
-        } else {
-          newTargetOpacity = 0.03; // Even dimmer for better contrast
-        }
-      }
-      
-      // Update the target opacity
-      connection.targetOpacity = newTargetOpacity;
-    });
-    
-    // Update previous active index
-    previousActiveIndex.current = activeCardIndex;
-  }, [activeCardIndex]);
-  
-  // Draw connections between card centers
-  const drawConnections = (ctx: CanvasRenderingContext2D, activeIndex: number | null) => {
-    const centers = cardCenters.current;
-    
-    ctx.lineWidth = 1;
-    
-    // Update connection opacities with animation
-    connections.current.forEach(connection => {
-      // Animation speed - exactly 2 seconds transition
-      const fadeSpeed = 0.0083; // Exactly 120 frames (2 seconds at 60fps) for full transition
-      
-      // Calculate the new current opacity - move towards target
-      if (connection.currentOpacity < connection.targetOpacity) {
-        connection.currentOpacity = Math.min(
-          connection.currentOpacity + fadeSpeed,
-          connection.targetOpacity
-        );
-      } else if (connection.currentOpacity > connection.targetOpacity) {
-        connection.currentOpacity = Math.max(
-          connection.currentOpacity - fadeSpeed,
-          connection.targetOpacity
-        );
-      }
-      
-      // Get source and target points
-      const sourcePoint = centers[connection.source];
-      const targetPoint = centers[connection.target];
-      
-      // Create gradient with current opacity
-      const gradient = ctx.createLinearGradient(
-        sourcePoint.x, sourcePoint.y, 
-        targetPoint.x, targetPoint.y
-      );
-      gradient.addColorStop(0, `rgba(102, 57, 218, ${connection.currentOpacity})`);
-      gradient.addColorStop(0.5, `rgba(66, 153, 225, ${connection.currentOpacity})`);
-      gradient.addColorStop(1, `rgba(236, 72, 153, ${connection.currentOpacity})`);
-      
-      ctx.strokeStyle = gradient;
-      
-      // Draw the connection line
-      ctx.beginPath();
-      ctx.moveTo(sourcePoint.x, sourcePoint.y);
-      ctx.lineTo(targetPoint.x, targetPoint.y);
-      ctx.stroke();
-    });
-  };
+  }, [getRandomColor]);
 
   // Update particle positions
-  const updateParticles = (deltaTime: number, activeIndex: number | null) => {
+  const updateParticles = useCallback((deltaTime: number, activeIndex: number | null) => {
     const centers = cardCenters.current;
     if (centers.length === 0) return;
     
@@ -439,10 +269,10 @@ export default function ConstellationNetwork({ cardRefs, activeCardIndex }: Cons
         particle.y = startPos.y + (endPos.y - startPos.y) * particle.progress;
       }
     });
-  };
+  }, []);
 
   // Draw all particles
-  const drawParticles = (ctx: CanvasRenderingContext2D) => {
+  const drawParticles = useCallback((ctx: CanvasRenderingContext2D) => {
     particles.current.forEach(particle => {
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
@@ -451,7 +281,175 @@ export default function ConstellationNetwork({ cardRefs, activeCardIndex }: Cons
       ctx.fillStyle = particle.color.replace(/[\d.]+\)$/, `${particle.opacity})`);
       ctx.fill();
     });
-  };
+  }, []);
+
+  // Draw connections between card centers without unused parameter
+  const drawConnections = useCallback((ctx: CanvasRenderingContext2D) => {
+    const centers = cardCenters.current;
+    
+    ctx.lineWidth = 1;
+    
+    // Update connection opacities with animation
+    connections.current.forEach(connection => {
+      // Animation speed - exactly 2 seconds transition
+      const fadeSpeed = 0.0083; // Exactly 120 frames (2 seconds at 60fps) for full transition
+      
+      // Calculate the new current opacity - move towards target
+      if (connection.currentOpacity < connection.targetOpacity) {
+        connection.currentOpacity = Math.min(
+          connection.currentOpacity + fadeSpeed,
+          connection.targetOpacity
+        );
+      } else if (connection.currentOpacity > connection.targetOpacity) {
+        connection.currentOpacity = Math.max(
+          connection.currentOpacity - fadeSpeed,
+          connection.targetOpacity
+        );
+      }
+      
+      // Get source and target points
+      const sourcePoint = centers[connection.source];
+      const targetPoint = centers[connection.target];
+      
+      // Create gradient with current opacity
+      const gradient = ctx.createLinearGradient(
+        sourcePoint.x, sourcePoint.y, 
+        targetPoint.x, targetPoint.y
+      );
+      gradient.addColorStop(0, `rgba(102, 57, 218, ${connection.currentOpacity})`);
+      gradient.addColorStop(0.5, `rgba(66, 153, 225, ${connection.currentOpacity})`);
+      gradient.addColorStop(1, `rgba(236, 72, 153, ${connection.currentOpacity})`);
+      
+      ctx.strokeStyle = gradient;
+      
+      // Draw the connection line
+      ctx.beginPath();
+      ctx.moveTo(sourcePoint.x, sourcePoint.y);
+      ctx.lineTo(targetPoint.x, targetPoint.y);
+      ctx.stroke();
+    });
+  }, []);
+
+  // Initialize canvas and resize handler
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current && canvasRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect();
+        setDimensions({ width, height });
+        canvasRef.current.width = width;
+        canvasRef.current.height = height;
+      }
+    };
+
+    // Initial setup
+    updateDimensions();
+
+    // Handle resize
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  // Main animation loop
+  useEffect(() => {
+    if (!canvasRef.current || cardCenters.current.length < 2) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const animate = (timestamp: number) => {
+      if (!lastUpdateTime.current) {
+        lastUpdateTime.current = timestamp;
+      }
+      
+      const deltaTime = timestamp - lastUpdateTime.current;
+      lastUpdateTime.current = timestamp;
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw connections
+      drawConnections(ctx);
+      
+      // Generate random particles occasionally
+      generateRandomParticles(timestamp);
+      
+      // Generate particles from active card if there is one
+      if (activeCardIndex !== null) {
+        generateActiveCardParticles(timestamp, activeCardIndex);
+      }
+      
+      // Update and draw particles
+      updateParticles(deltaTime / 1000, activeCardIndex);
+      drawParticles(ctx);
+      
+      // Continue animation loop
+      animationFrameId.current = requestAnimationFrame(animate);
+    };
+    
+    // Start animation
+    animationFrameId.current = requestAnimationFrame(animate);
+    
+    // Cleanup
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, [dimensions, activeCardIndex, drawConnections, generateRandomParticles, generateActiveCardParticles, updateParticles, drawParticles]);
+
+  // Initialize connections
+  useEffect(() => {
+    // Function to initialize connections based on current card centers
+    const initializeConnections = () => {
+      if (cardCenters.current.length < 2) return;
+      
+      const newConnections: Connection[] = [];
+      const centers = cardCenters.current;
+      
+      for (let i = 0; i < centers.length; i++) {
+        for (let j = i + 1; j < centers.length; j++) {
+          // Default opacity for all connections is 0.15
+          newConnections.push({
+            source: i,
+            target: j,
+            currentOpacity: 0.15,
+            targetOpacity: 0.15
+          });
+        }
+      }
+      
+      connections.current = newConnections;
+    };
+    
+    // Initialize connections when component mounts and when cardRefs changes
+    initializeConnections();
+  }, [cardRefs]);
+  
+  // Update target opacities when active card changes
+  useEffect(() => {
+    if (connections.current.length === 0) return;
+    
+    connections.current.forEach(connection => {
+      // Default opacity
+      let newTargetOpacity = 0.15;
+      
+      if (activeCardIndex !== null) {
+        // If one of the connected cards is active, make the line more visible
+        if (connection.source === activeCardIndex || connection.target === activeCardIndex) {
+          newTargetOpacity = 0.6; // Increased for more dramatic effect
+        } else {
+          newTargetOpacity = 0.03; // Even dimmer for better contrast
+        }
+      }
+      
+      // Update the target opacity
+      connection.targetOpacity = newTargetOpacity;
+    });
+    
+    // Update previous active index
+    previousActiveIndex.current = activeCardIndex;
+  }, [activeCardIndex]);
 
   return (
     <div 

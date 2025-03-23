@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 interface NebulaDepthCardProps {
   title: string;
@@ -17,8 +17,7 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cardDimensions, setCardDimensions] = useState({ width: 0, height: 0, left: 0, top: 0 });
   
-  // Initialize card dimensions and particles
-  useEffect(() => {
+  const updateCardDimensions = useCallback(() => {
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect();
       setCardDimensions({
@@ -27,31 +26,39 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
         left: rect.left,
         top: rect.top
       });
-      
-      // Initialize particles canvas
-      initializeParticles();
     }
-    
-    window.addEventListener('resize', updateCardDimensions);
-    return () => {
-      window.removeEventListener('resize', updateCardDimensions);
-    };
   }, []);
   
-  const updateCardDimensions = () => {
-    if (cardRef.current) {
-      const rect = cardRef.current.getBoundingClientRect();
-      setCardDimensions({
-        width: rect.width,
-        height: rect.height,
-        left: rect.left,
-        top: rect.top
-      });
-    }
+  // Handle mouse movement for parallax effect
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!cardRef.current) return;
+    
+    // Calculate mouse position relative to card center
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Normalize values between -1 and 1
+    const x = (e.clientX - centerX) / (rect.width / 2);
+    const y = (e.clientY - centerY) / (rect.height / 2);
+    
+    setMousePosition({ x, y });
   };
   
-  // Particles animation setup
-  const initializeParticles = () => {
+  // Get a random nebula color
+  const getRandomNebulaColor = useCallback((): string => {
+    const colors = [
+      'rgba(102, 57, 218', // Purple
+      'rgba(66, 153, 225', // Blue
+      'rgba(236, 72, 153', // Pink
+      'rgba(49, 46, 129', // Indigo
+      'rgba(112, 26, 117' // Violet
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }, []);
+  
+  // Particles animation setup - using useCallback to avoid dependency issues
+  const initializeParticles = useCallback(() => {
     const canvas = particlesRef.current;
     if (!canvas) return;
     
@@ -115,35 +122,28 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  };
-  
-  // Handle mouse movement for parallax effect
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!cardRef.current) return;
+  }, [cardDimensions.width, cardDimensions.height, getRandomNebulaColor]);
+
+  // Initialize card dimensions and particles
+  useEffect(() => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      setCardDimensions({
+        width: rect.width,
+        height: rect.height,
+        left: rect.left,
+        top: rect.top
+      });
+      
+      // Initialize particles canvas
+      initializeParticles();
+    }
     
-    // Calculate mouse position relative to card center
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    // Normalize values between -1 and 1
-    const x = (e.clientX - centerX) / (rect.width / 2);
-    const y = (e.clientY - centerY) / (rect.height / 2);
-    
-    setMousePosition({ x, y });
-  };
-  
-  // Get a random nebula color
-  const getRandomNebulaColor = (): string => {
-    const colors = [
-      'rgba(102, 57, 218', // Purple
-      'rgba(66, 153, 225', // Blue
-      'rgba(236, 72, 153', // Pink
-      'rgba(49, 46, 129', // Indigo
-      'rgba(112, 26, 117' // Violet
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
+    window.addEventListener('resize', updateCardDimensions);
+    return () => {
+      window.removeEventListener('resize', updateCardDimensions);
+    };
+  }, [initializeParticles, updateCardDimensions]);
   
   // Calculate 3D transform based on mouse position
   const getTransform = () => {
