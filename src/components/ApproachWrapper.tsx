@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import ConstellationNetwork from './ConstellationNetwork';
+import React, { useRef } from 'react';
 import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface ApproachStepWrapperProps {
@@ -48,21 +47,17 @@ interface ApproachWrapperProps {
 export default function ApproachWrapper({ children, columns = 3 }: ApproachWrapperProps) {
   const childrenArray = React.Children.toArray(children);
   const cardRefs = childrenArray.map(() => useRef<HTMLDivElement>(null));
-  const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   
   return (
     <div className="relative">
-      {/* Constellation network overlay */}
-      <ConstellationNetwork cardRefs={cardRefs} activeCardIndex={activeCardIndex} />
-      
       {/* Approach steps grid */}
       <div className={`grid grid-cols-1 md:grid-cols-${columns} gap-8 relative z-20`}>
         {childrenArray.map((child, index) => (
           <ApproachStepWrapper
             key={index}
             ref={cardRefs[index]}
-            onMouseEnter={() => setActiveCardIndex(index)}
-            onMouseLeave={() => setActiveCardIndex(null)}
+            onMouseEnter={() => {}}
+            onMouseLeave={() => {}}
           >
             {child}
           </ApproachStepWrapper>

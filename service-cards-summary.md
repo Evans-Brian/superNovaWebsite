@@ -16,19 +16,23 @@ These cards are used in various sections throughout the site including the "Why 
 
 - **Component:** `src/components/FeatureCard.tsx`
   - **Usage:** Homepage "Why Choose SuperNova Automations" section
-  - **Visual Style:** Center-aligned cards with circular icons and orbit particles
+  - **Visual Style:** Center-aligned cards with circular icons, orbit particles, and interactive glowing border effect
 
 - **Component:** `src/components/KeyFeaturesWrapper.tsx` (using CardWrapper)
   - **Usage:** Voice AI page "Key Features" section, Process Automations page "Common Use Cases" section, Custom Integrations page "Integration Types" section
-  - **Visual Style:** Standard cards with constellation network connecting them
-
-- **Component:** `src/components/BenefitsWrapper.tsx` (using BenefitWrapper)
-  - **Usage:** Process Automations page "Benefits of Process Automation" section, Custom Integrations page "Common Integration Scenarios" section
-  - **Visual Style:** Flex cards with icon on left and content on right, connected by constellation network
+  - **Visual Style:** Standard cards with interactive glowing border effect (no constellation network connections)
 
 - **Component:** `src/components/ApproachWrapper.tsx` (using ApproachStepWrapper)
   - **Usage:** Custom Integrations page "Our Integration Approach" section
-  - **Visual Style:** Cards with numbered steps, connected by constellation network
+  - **Visual Style:** Cards with numbered steps and interactive glowing border effect (no constellation network connections)
+
+## Constellation Effect
+
+These cards feature a constellation network that connects cards, highlighting relationships when hovering.
+
+- **Component:** `src/components/BenefitsWrapper.tsx` (using BenefitWrapper)
+  - **Usage:** Process Automations page "Benefits of Process Automation" section, Custom Integrations page "Common Integration Scenarios" section
+  - **Visual Style:** Flex cards with icon on left and content on right, connected by constellation network (without glowing borders)
 
 ## Other Service Cards
 

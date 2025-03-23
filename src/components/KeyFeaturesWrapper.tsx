@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import ConstellationNetwork from './ConstellationNetwork';
+import React, { useRef } from 'react';
 import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface CardWrapperProps {
@@ -49,21 +48,17 @@ interface KeyFeaturesWrapperProps {
 export default function KeyFeaturesWrapper({ children, columns = 3 }: KeyFeaturesWrapperProps) {
   const childrenArray = React.Children.toArray(children);
   const cardRefs = childrenArray.map(() => useRef<HTMLDivElement>(null));
-  const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   
   return (
     <div className="relative">
-      {/* Constellation network overlay */}
-      <ConstellationNetwork cardRefs={cardRefs} activeCardIndex={activeCardIndex} />
-      
       {/* Feature cards grid */}
       <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${columns} gap-8 relative z-20`}>
         {childrenArray.map((child, index) => (
           <CardWrapper
             key={index}
             ref={cardRefs[index]}
-            onMouseEnter={() => setActiveCardIndex(index)}
-            onMouseLeave={() => setActiveCardIndex(null)}
+            onMouseEnter={() => {}}
+            onMouseLeave={() => {}}
           >
             {child}
           </CardWrapper>
