@@ -4,6 +4,8 @@ import { useState } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import ServiceCard from './ServiceCard';
 import NebulaDepthCard from './NebulaDepthCard';
+import CosmicPortalCard from './CosmicPortalCard';
+import StellarLifecycleCard from './StellarLifecycleCard';
 
 // Fallback component in case any of the card components fail
 const FallbackCard = ({ title, description, icon, link }: any) => (
@@ -11,33 +13,6 @@ const FallbackCard = ({ title, description, icon, link }: any) => (
     <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
     <p className="text-gray-300">{description}</p>
     <p className="mt-4 text-purple-400">Component failed to load</p>
-  </div>
-);
-
-// Create simplified versions of the complex cards for debugging
-const SimpleCosmicPortalCard = ({ title, description, icon, link }: any) => (
-  <div className="p-6 h-full bg-gray-800 rounded-lg border border-pink-500">
-    <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4 relative bg-purple-600">
-      {icon === 'voice' && 'V'}
-      {icon === 'process' && 'P'}
-      {icon === 'integration' && 'I'}
-    </div>
-    <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-    <p className="text-gray-300">{description}</p>
-    <p className="mt-4 text-pink-400">Cosmic Portal Card (Simple Version)</p>
-  </div>
-);
-
-const SimpleLifecycleCard = ({ title, description, icon, link }: any) => (
-  <div className="p-6 h-full bg-gray-800 rounded-lg border border-yellow-500">
-    <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4 relative bg-yellow-600">
-      {icon === 'voice' && 'V'}
-      {icon === 'process' && 'P'}
-      {icon === 'integration' && 'I'}
-    </div>
-    <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-    <p className="text-gray-300">{description}</p>
-    <p className="mt-4 text-yellow-400">Stellar Lifecycle Card (Simple Version)</p>
   </div>
 );
 
@@ -177,7 +152,7 @@ export default function CompareDesigns() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {serviceData.map((service, index) => (
                 <ErrorBoundary key={`cosmic-${index}`} fallback={<FallbackCard {...service} />}>
-                  <SimpleCosmicPortalCard 
+                  <CosmicPortalCard 
                     title={service.title}
                     description={service.description}
                     icon={service.icon}
@@ -201,7 +176,7 @@ export default function CompareDesigns() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {serviceData.map((service, index) => (
                 <ErrorBoundary key={`stellar-${index}`} fallback={<FallbackCard {...service} />}>
-                  <SimpleLifecycleCard 
+                  <StellarLifecycleCard 
                     title={service.title}
                     description={service.description}
                     icon={service.icon}
