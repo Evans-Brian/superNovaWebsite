@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import FeatureCard from './FeatureCard';
 
 export default function FeatureCardGrid() {
@@ -10,10 +10,80 @@ export default function FeatureCardGrid() {
   const card3Ref = useRef<HTMLDivElement>(null);
   const card4Ref = useRef<HTMLDivElement>(null);
   
+  // Create a shared ref for the grid
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  // Function to equalize card heights
+  const equalizeCardHeights = () => {
+    if (gridRef.current) {
+      // Get all FeatureCard elements within the grid
+      const cards = gridRef.current.querySelectorAll('[data-card-type="Bordered Service Cards"]');
+      
+      // If we found cards, equalize their heights
+      if (cards.length > 0) {
+        let maxHeight = 0;
+        
+        // First, reset all heights to auto to get their natural heights
+        cards.forEach((card) => {
+          const cardElement = card as HTMLElement;
+          cardElement.style.height = 'auto';
+          
+          // Calculate the content height
+          const contentContainer = cardElement.querySelector('.card-content-container') as HTMLElement;
+          if (contentContainer) {
+            const height = contentContainer.getBoundingClientRect().height;
+            maxHeight = Math.max(maxHeight, height);
+          }
+        });
+        
+        // Then set the content container height for all cards
+        if (maxHeight > 0) {
+          cards.forEach((card) => {
+            const contentContainer = card.querySelector('.card-content-container') as HTMLElement;
+            if (contentContainer) {
+              contentContainer.style.height = `${maxHeight}px`;
+            }
+          });
+        }
+      }
+    }
+  };
+  
+  // Use useEffect to equalize heights after render and on resize
+  useEffect(() => {
+    // Ensure this code only runs on the client side, not during server-side rendering
+    if (typeof window === 'undefined') return;
+    
+    // Initial equalization
+    equalizeCardHeights();
+    
+    // Re-equalize on window resize
+    const handleResize = () => {
+      // Reset heights first
+      if (gridRef.current) {
+        const contentContainers = gridRef.current.querySelectorAll('.card-content-container');
+        contentContainers.forEach((container) => {
+          (container as HTMLElement).style.height = 'auto';
+        });
+      }
+      
+      // Small delay to ensure DOM updates
+      setTimeout(equalizeCardHeights, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('load', equalizeCardHeights);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('load', equalizeCardHeights);
+    };
+  }, []);
+  
   return (
     <div className="relative">
-      {/* Feature cards grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-20">
+      {/* Feature cards grid with equal height rows */}
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-20">
         <FeatureCard
           ref={card1Ref}
           onMouseEnter={() => {}}

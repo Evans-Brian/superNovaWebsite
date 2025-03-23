@@ -16,8 +16,14 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
   const [glowIntensity, setGlowIntensity] = useState(0);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0, width: 0, height: 0 });
   
-  // Update card position on mount and window resize
+  // State to store parent section's cards heights
+  const [sectionCardsHeight, setSectionCardsHeight] = useState<number | null>(null);
+  
+  // Update card position on mount and window resize and equalize card heights
   useEffect(() => {
+    // Ensure this code only runs on the client side, not during server-side rendering
+    if (typeof window === 'undefined') return;
+    
     const updateCardPosition = () => {
       if (cardRef.current) {
         const rect = cardRef.current.getBoundingClientRect();
@@ -30,18 +36,64 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
       }
     };
     
-    // Initial position
-    updateCardPosition();
+    // Find all cards in the same section with the same type
+    const equalizeCardHeights = () => {
+      if (cardRef.current) {
+        // Find the parent section element (usually a div with grid class)
+        let parentSection = cardRef.current.closest('.grid') || cardRef.current.parentElement;
+        
+        if (parentSection) {
+          // Find all cards with the same type in this section
+          const sameTypeCards = parentSection.querySelectorAll(`[data-card-type="${type}"]`);
+          
+          if (sameTypeCards.length > 1) {
+            // Find the maximum natural height of all cards
+            let maxHeight = 0;
+            
+            sameTypeCards.forEach((card) => {
+              // Temporarily remove fixed height to measure natural height
+              const cardElement = card as HTMLElement;
+              const originalHeight = cardElement.style.height;
+              cardElement.style.height = 'auto';
+              
+              const height = cardElement.getBoundingClientRect().height;
+              maxHeight = Math.max(maxHeight, height);
+              
+              // Restore original height
+              cardElement.style.height = originalHeight;
+            });
+            
+            // Set all cards to the maximum height
+            if (maxHeight > 0) {
+              setSectionCardsHeight(maxHeight);
+            }
+          }
+        }
+      }
+    };
     
-    // Update position on resize
-    window.addEventListener('resize', updateCardPosition);
+    // Initial position and height equalization
+    updateCardPosition();
+    equalizeCardHeights();
+    
+    // Update on resize
+    window.addEventListener('resize', () => {
+      updateCardPosition();
+      // Reset height to auto before recalculating
+      setSectionCardsHeight(null);
+      setTimeout(equalizeCardHeights, 100); // Small delay to ensure DOM updates
+    });
     window.addEventListener('scroll', updateCardPosition);
+    
+    // Trigger height equalization after content is fully loaded
+    window.addEventListener('load', equalizeCardHeights);
     
     return () => {
       window.removeEventListener('resize', updateCardPosition);
       window.removeEventListener('scroll', updateCardPosition);
+      window.removeEventListener('load', equalizeCardHeights);
     };
-  }, []);
+  }, [type]);
   
   // Track mouse position and calculate glow intensity
   useEffect(() => {
@@ -86,8 +138,9 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
     >
       <div 
         ref={cardRef}
-        className={`bg-neutral-950 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:transform hover:scale-105 relative h-full cursor-pointer ${type}`}
+        className={`bg-neutral-950 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:transform hover:scale-105 relative cursor-pointer ${type}`}
         style={{
+          height: sectionCardsHeight ? `${sectionCardsHeight}px` : '100%',
           boxShadow: `0 0 ${glowSize} ${glowIntensity > 0.05 ? glowColors.primary : 'transparent'}`,
           borderColor: glowColors.primary,
           borderWidth: '1px',

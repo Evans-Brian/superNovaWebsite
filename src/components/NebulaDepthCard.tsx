@@ -16,6 +16,8 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cardDimensions, setCardDimensions] = useState({ width: 0, height: 0, left: 0, top: 0 });
+  // State to store parent section's cards heights
+  const [sectionCardsHeight, setSectionCardsHeight] = useState<number | null>(null);
   
   const updateCardDimensions = useCallback(() => {
     if (cardRef.current) {
@@ -26,6 +28,42 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
         left: rect.left,
         top: rect.top
       });
+    }
+  }, []);
+  
+  // Find all cards in the same section and equalize heights
+  const equalizeCardHeights = useCallback(() => {
+    if (cardRef.current) {
+      // Find the parent section element (usually a div with grid class)
+      let parentSection = cardRef.current.closest('.grid') || cardRef.current.parentElement;
+      
+      if (parentSection) {
+        // Find all cards with the same data-card-type in this section
+        const sameTypeCards = parentSection.querySelectorAll('[data-card-type="Our Services Service Cards"]');
+        
+        if (sameTypeCards.length > 1) {
+          // Find the maximum natural height of all cards
+          let maxHeight = 0;
+          
+          sameTypeCards.forEach((card) => {
+            // Temporarily remove fixed height to measure natural height
+            const cardElement = card as HTMLElement;
+            const originalHeight = cardElement.style.height;
+            cardElement.style.height = 'auto';
+            
+            const height = cardElement.getBoundingClientRect().height;
+            maxHeight = Math.max(maxHeight, height);
+            
+            // Restore original height
+            cardElement.style.height = originalHeight;
+          });
+          
+          // Set all cards to the maximum height
+          if (maxHeight > 0) {
+            setSectionCardsHeight(maxHeight);
+          }
+        }
+      }
     }
   }, []);
   
@@ -124,8 +162,11 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
     };
   }, [cardDimensions.width, cardDimensions.height, getRandomNebulaColor]);
 
-  // Initialize card dimensions and particles
+  // Initialize card dimensions, particles, and equalize heights
   useEffect(() => {
+    // Ensure this code only runs on the client side, not during server-side rendering
+    if (typeof window === 'undefined') return;
+    
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect();
       setCardDimensions({
@@ -139,11 +180,26 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
       initializeParticles();
     }
     
-    window.addEventListener('resize', updateCardDimensions);
-    return () => {
-      window.removeEventListener('resize', updateCardDimensions);
+    // Initial height equalization
+    equalizeCardHeights();
+    
+    // Update dimensions on resize
+    const handleResize = () => {
+      updateCardDimensions();
+      // Reset height to auto before recalculating
+      setSectionCardsHeight(null);
+      setTimeout(equalizeCardHeights, 100); // Small delay to ensure DOM updates
     };
-  }, [initializeParticles, updateCardDimensions]);
+    
+    window.addEventListener('resize', handleResize);
+    // Trigger height equalization after content is fully loaded
+    window.addEventListener('load', equalizeCardHeights);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('load', equalizeCardHeights);
+    };
+  }, [initializeParticles, updateCardDimensions, equalizeCardHeights]);
   
   // Calculate 3D transform based on mouse position
   const getTransform = () => {
@@ -171,11 +227,12 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
     >
       <div 
         ref={cardRef}
-        className="Our Services Service Cards relative h-full overflow-hidden rounded-lg transition-all duration-300 cursor-pointer transform-gpu"
+        className="Our Services Service Cards relative overflow-hidden rounded-lg transition-all duration-300 cursor-pointer transform-gpu"
         style={{
+          height: sectionCardsHeight ? `${sectionCardsHeight}px` : '100%',
           transform: getTransform(),
           transformStyle: 'preserve-3d',
-          transition: 'transform 0.2s ease-out',
+          transition: 'transform 0.2s ease-out'
         }}
         data-card-type="Our Services Service Cards"
         onMouseEnter={() => setIsHovered(true)}

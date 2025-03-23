@@ -2,6 +2,8 @@
 
 This document summarizes the different types of service cards used throughout the SuperNova Automations website, organized by their type.
 
+**Note:** All service cards within the same section now have consistent heights to create a cleaner, more cohesive user interface. This is achieved using dynamic height equalization that automatically adjusts all cards to match the tallest card in each section.
+
 ## Our Services Service Cards
 
 These cards are found under the "Our Services" section on the hero page:
@@ -34,6 +36,14 @@ These cards have different styles without the constellation effect or bordered s
 - `src/components/CosmicPortalCard.tsx` - Portal-style cards with different visual effect
 
 ## Technical Implementation Details
+
+### Height Equalization
+- Implemented in all card components: `ServiceCard.tsx`, `NebulaDepthCard.tsx`, and `FeatureCard.tsx`
+- Uses a DOM-based approach to find all cards of the same type within a section
+- Measures natural heights and sets all cards to match the tallest card
+- Responsive to window resizing and content changes
+- Maintains consistent card heights within each section while preserving the unique styling of each card type
+- Ensures all card height calculations run client-side only to prevent server-side rendering issues
 
 ### Constellation Effect
 - Implemented in `src/components/ConstellationNetwork.tsx`

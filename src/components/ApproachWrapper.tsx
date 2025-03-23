@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface ApproachStepWrapperProps {
@@ -16,7 +16,7 @@ const ApproachStepWrapper = React.forwardRef<HTMLDivElement, ApproachStepWrapper
     return (
       <div 
         ref={ref}
-        className="p-1 rounded-xl relative Bordered Service Cards"
+        className="p-1 rounded-xl relative h-full Bordered Service Cards"
         data-card-type="Bordered Service Cards"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -29,7 +29,7 @@ const ApproachStepWrapper = React.forwardRef<HTMLDivElement, ApproachStepWrapper
           inactiveZone={0.01}
           borderWidth={3}
         />
-        <div className="relative p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] bg-gray-800 shadow-sm">
+        <div className="relative p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] bg-gray-800 shadow-sm approach-content">
           {children}
         </div>
       </div>
@@ -52,10 +52,76 @@ export default function ApproachWrapper({ children, columns = 3 }: ApproachWrapp
     return Array(childrenArray.length).fill(null).map(() => React.createRef<HTMLDivElement>());
   }, [childrenArray.length]);
   
+  // Reference for the main grid
+  const gridRef = useRef<HTMLDivElement>(null);
+  
+  // Function to equalize heights of all cards
+  const equalizeCardHeights = () => {
+    if (gridRef.current) {
+      // Find all approach content containers within the grid
+      const cards = gridRef.current.querySelectorAll('.approach-content');
+      
+      if (cards.length > 1) {
+        let maxHeight = 0;
+        
+        // First pass: get maximum natural height
+        cards.forEach((card) => {
+          const cardElement = card as HTMLElement;
+          const originalHeight = cardElement.style.height;
+          cardElement.style.height = 'auto';
+          
+          const height = cardElement.getBoundingClientRect().height;
+          maxHeight = Math.max(maxHeight, height);
+          
+          // Restore original height
+          cardElement.style.height = originalHeight;
+        });
+        
+        // Second pass: set all to maximum height
+        if (maxHeight > 0) {
+          cards.forEach((card) => {
+            (card as HTMLElement).style.height = `${maxHeight}px`;
+          });
+        }
+      }
+    }
+  };
+  
+  // Apply height equalization after render and on resize
+  useEffect(() => {
+    // Ensure this code only runs on the client side, not during server-side rendering
+    if (typeof window === 'undefined') return;
+    
+    // Initial equalization
+    equalizeCardHeights();
+    
+    // Re-equalize on window resize
+    const handleResize = () => {
+      // Reset heights to auto first
+      if (gridRef.current) {
+        const cards = gridRef.current.querySelectorAll('.approach-content');
+        cards.forEach((card) => {
+          (card as HTMLElement).style.height = 'auto';
+        });
+      }
+      
+      // Small delay to ensure DOM updates
+      setTimeout(equalizeCardHeights, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('load', equalizeCardHeights);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('load', equalizeCardHeights);
+    };
+  }, [childrenArray]);
+  
   return (
     <div className="relative">
-      {/* Approach steps grid */}
-      <div className={`grid grid-cols-1 md:grid-cols-${columns} gap-8 relative z-20`}>
+      {/* Approach steps grid with equal heights */}
+      <div ref={gridRef} className={`grid grid-cols-1 md:grid-cols-${columns} gap-8 relative z-20`}>
         {childrenArray.map((child, index) => (
           <ApproachStepWrapper
             key={index}
