@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import ConstellationNetwork from './ConstellationNetwork';
+import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface CardWrapperProps {
   className?: string;
@@ -17,11 +18,22 @@ const CardWrapper = React.forwardRef<HTMLDivElement, CardWrapperProps>(
     return (
       <div 
         ref={ref}
-        className={className || "bg-gray-900 p-6 rounded-lg shadow-md"}
+        className="p-1 rounded-xl relative Bordered Service Cards"
+        data-card-type="Bordered Service Cards"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        {children}
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={3}
+        />
+        <div className={`relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] bg-gray-900 shadow-sm ${className}`}>
+          {children}
+        </div>
       </div>
     );
   }

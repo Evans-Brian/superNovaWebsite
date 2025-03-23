@@ -171,12 +171,13 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
     >
       <div 
         ref={cardRef}
-        className="relative h-full overflow-hidden rounded-lg transition-all duration-300 cursor-pointer transform-gpu"
+        className="Our Services Service Cards relative h-full overflow-hidden rounded-lg transition-all duration-300 cursor-pointer transform-gpu"
         style={{
           transform: getTransform(),
           transformStyle: 'preserve-3d',
           transition: 'transform 0.2s ease-out',
         }}
+        data-card-type="Our Services Service Cards"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onMouseMove={(e) => handleMouseMove(e.nativeEvent)}

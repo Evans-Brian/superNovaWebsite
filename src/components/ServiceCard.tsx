@@ -8,9 +8,10 @@ interface ServiceCardProps {
   description: string;
   icon: string;
   link: string;
+  type?: "Our Services Service Cards" | "Bordered Service Cards" | "Other Service Cards";
 }
 
-export default function ServiceCard({ title, description, icon, link }: ServiceCardProps) {
+export default function ServiceCard({ title, description, icon, link, type = "Other Service Cards" }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [glowIntensity, setGlowIntensity] = useState(0);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0, width: 0, height: 0 });
@@ -85,13 +86,14 @@ export default function ServiceCard({ title, description, icon, link }: ServiceC
     >
       <div 
         ref={cardRef}
-        className="bg-neutral-950 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:transform hover:scale-105 relative h-full cursor-pointer"
+        className={`bg-neutral-950 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:transform hover:scale-105 relative h-full cursor-pointer ${type}`}
         style={{
           boxShadow: `0 0 ${glowSize} ${glowIntensity > 0.05 ? glowColors.primary : 'transparent'}`,
           borderColor: glowColors.primary,
           borderWidth: '1px',
           borderStyle: 'solid'
         }}
+        data-card-type={type}
       >
         {/* Glow overlay - creates an additional inner glow effect */}
         <div 

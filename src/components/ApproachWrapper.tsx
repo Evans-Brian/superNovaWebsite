@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import ConstellationNetwork from './ConstellationNetwork';
+import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface ApproachStepWrapperProps {
   ref: React.RefObject<HTMLDivElement>;
@@ -16,11 +17,22 @@ const ApproachStepWrapper = React.forwardRef<HTMLDivElement, ApproachStepWrapper
     return (
       <div 
         ref={ref}
-        className="bg-gray-800 p-6 rounded-lg shadow-md"
+        className="p-1 rounded-xl relative Bordered Service Cards"
+        data-card-type="Bordered Service Cards"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        {children}
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={3}
+        />
+        <div className="relative p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] bg-gray-800 shadow-sm">
+          {children}
+        </div>
       </div>
     );
   }
