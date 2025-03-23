@@ -17,7 +17,7 @@ export default function StarfieldBackground({ children }: StarfieldBackgroundPro
     if (!c) return;
     
     // Configuration
-    const numStars = 500;
+    const numStars = 700;
     const radius = '0.' + Math.floor(Math.random() * 9) + 1;
     let focalLength = canvas.width * 2;
     let centerX: number, centerY: number;
@@ -50,8 +50,8 @@ export default function StarfieldBackground({ children }: StarfieldBackgroundPro
     const moveStars = () => {
       for (let i = 0; i < numStars; i++) {
         const star = stars[i];
-        // Move 80% slower than original
-        star.z -= 0.2;
+        // Move at a moderate speed (0.3 instead of 0.2 - 50% faster)
+        star.z -= 0.3;
         
         if (star.z <= 0) {
           star.z = canvas.width;
@@ -82,10 +82,15 @@ export default function StarfieldBackground({ children }: StarfieldBackgroundPro
         pixelX += centerX;
         pixelY = (star.y - centerY) * (focalLength / star.z);
         pixelY += centerY;
-        pixelRadius = 1 * (focalLength / star.z);
         
+        // Make stars smaller overall, especially when they appear closer
+        pixelRadius = Math.min(0.8 * (focalLength / star.z), 2);
+        
+        // Draw circular stars instead of squares
+        c.beginPath();
+        c.arc(pixelX, pixelY, pixelRadius, 0, Math.PI * 2);
         c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
-        c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+        c.fill();
       }
     };
     
