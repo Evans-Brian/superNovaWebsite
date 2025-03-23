@@ -3,6 +3,7 @@
 import HeroSection from "@/components/HeroSection";
 import NebulaDepthCard from "@/components/NebulaDepthCard";
 import FeatureCardGrid from "@/components/FeatureCardGrid";
+import StarfieldBackground from "@/components/StarfieldBackground";
 import Link from "next/link";
 
 export default function Home() {
@@ -44,17 +45,19 @@ export default function Home() {
       </section>
       
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-neutral-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Why Choose SuperNova Automations</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We combine technical expertise with business acumen to deliver solutions that drive real results.
-            </p>
+      <section className="text-white">
+        <StarfieldBackground>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Why Choose SuperNova Automations</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                We combine technical expertise with business acumen to deliver solutions that drive real results.
+              </p>
+            </div>
+            
+            <FeatureCardGrid />
           </div>
-          
-          <FeatureCardGrid />
-        </div>
+        </StarfieldBackground>
       </section>
       
       {/* CTA Section */}
