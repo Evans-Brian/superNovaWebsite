@@ -16,7 +16,7 @@ export default function Home() {
         {/* Top border - only pulsing glow, flush with edge */}
         <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
           style={{
-            animation: 'borderGlowPulse 3s infinite',
+            animation: 'borderGlowPulse 6s infinite',
             zIndex: 5
           }}
         />
@@ -24,7 +24,7 @@ export default function Home() {
         {/* Bottom border - only pulsing glow, flush with edge */}
         <div className="absolute bottom-0 left-0 right-0 h-0 pointer-events-none"
           style={{
-            animation: 'borderGlowPulse 3s infinite',
+            animation: 'borderGlowPulse 6s infinite',
             zIndex: 5
           }}
         />
