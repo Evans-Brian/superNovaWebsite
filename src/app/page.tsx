@@ -60,7 +60,14 @@ export default function Home() {
       </section>
       
       {/* Why Choose Us Section */}
-      <section className="text-white">
+      <section className="text-white relative">
+        {/* Bottom border - only pulsing glow, flush with edge */}
+        <div className="absolute bottom-0 left-0 right-0 h-0 pointer-events-none"
+          style={{
+            animation: 'borderGlowPulse 6s infinite',
+            zIndex: 10 /* Higher z-index to appear above StarfieldBackground */
+          }}
+        />
         <StarfieldBackground>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center mb-12">
