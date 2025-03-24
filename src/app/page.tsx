@@ -12,20 +12,18 @@ export default function Home() {
       <HeroSection />
       
       {/* Services Section */}
-      <section className="py-16 bg-gray-800 text-white relative rounded-none overflow-hidden">
-        {/* Top border with pulsing glow */}
-        <div className="absolute top-0 left-0 right-0 h-4 pointer-events-none" 
+      <section className="py-16 bg-gray-800 text-white relative">
+        {/* Top border - only pulsing glow, flush with edge */}
+        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
           style={{
-            background: 'linear-gradient(180deg, rgba(102, 57, 218, 0.8) 0%, rgba(102, 57, 218, 0.2) 100%)',
             animation: 'borderGlowPulse 3s infinite',
             zIndex: 5
           }}
         />
         
-        {/* Bottom border with pulsing glow */}
-        <div className="absolute bottom-0 left-0 right-0 h-4 pointer-events-none"
+        {/* Bottom border - only pulsing glow, flush with edge */}
+        <div className="absolute bottom-0 left-0 right-0 h-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(0deg, rgba(102, 57, 218, 0.8) 0%, rgba(102, 57, 218, 0.2) 100%)',
             animation: 'borderGlowPulse 3s infinite',
             zIndex: 5
           }}
