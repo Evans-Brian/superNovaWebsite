@@ -12,7 +12,24 @@ export default function Home() {
       <HeroSection />
       
       {/* Services Section */}
-      <section className="py-16 bg-gray-800 text-white">
+      <section className="py-16 bg-gray-800 text-white relative rounded-none overflow-hidden">
+        {/* Top border with pulsing glow */}
+        <div className="absolute top-0 left-0 right-0 h-4 pointer-events-none" 
+          style={{
+            background: 'linear-gradient(180deg, rgba(102, 57, 218, 0.8) 0%, rgba(102, 57, 218, 0.2) 100%)',
+            animation: 'borderGlowPulse 3s infinite',
+            zIndex: 5
+          }}
+        />
+        
+        {/* Bottom border with pulsing glow */}
+        <div className="absolute bottom-0 left-0 right-0 h-4 pointer-events-none"
+          style={{
+            background: 'linear-gradient(0deg, rgba(102, 57, 218, 0.8) 0%, rgba(102, 57, 218, 0.2) 100%)',
+            animation: 'borderGlowPulse 3s infinite',
+            zIndex: 5
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Our Services</h2>
@@ -49,7 +66,7 @@ export default function Home() {
         <StarfieldBackground>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Why Choose SuperNova Automations</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Why Choose SuperNova Automations?</h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 We combine technical expertise with business acumen to deliver solutions that drive real results.
               </p>
