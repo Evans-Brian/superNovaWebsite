@@ -273,14 +273,22 @@ export default function CustomIntegrationsPage() {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-16 bg-gray-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Integration Approach</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We follow a structured methodology to ensure successful integration projects.
-            </p>
-          </div>
+      <StarfieldBackground>
+        <section className="py-16 relative">
+          {/* Top border glow */}
+          <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+            style={{
+              animation: 'borderGlowPulse 6s infinite',
+              zIndex: 5
+            }}
+          />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Our Integration Approach</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                We follow a structured methodology to ensure successful integration projects.
+              </p>
+            </div>
           
           <ApproachWrapper columns={3}>
             <div>
@@ -345,6 +353,7 @@ export default function CustomIntegrationsPage() {
           </ApproachWrapper>
         </div>
       </section>
+      </StarfieldBackground>
 
       {/* CTA Section */}
       <section className="py-16 text-white relative" style={{ 
