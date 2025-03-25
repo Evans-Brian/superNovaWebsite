@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion } from 'framer-motion';
 
 interface Particle {
   x: number;
@@ -521,14 +522,32 @@ export default function RippleSupernovaBg({
       className="relative w-full h-full overflow-hidden"
       style={{ pointerEvents: 'none', zIndex: 1 }}
     >
-      {/* Interactive Canvas - pointer-events-none prevents it from capturing mouse events */}
-      <canvas 
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-      />
-      
-      {/* Subtle darkening overlay */}
-      <div className="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
+      {/* Motion div wrapper for the expansion animation */}
+      <motion.div
+        key="supernova-bg-animation"
+        initial={{
+          opacity: 0,
+          scale: 1.5,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          transition: {
+            duration: 4,
+            ease: [0.25, 0.1, 0.25, 1], // Cubic bezier easing
+          },
+        }}
+        className="absolute inset-0 overflow-hidden"
+      >
+        {/* Interactive Canvas - pointer-events-none prevents it from capturing mouse events */}
+        <canvas 
+          ref={canvasRef}
+          className="absolute inset-0 pointer-events-none"
+        />
+        
+        {/* Subtle darkening overlay */}
+        <div className="absolute inset-0 bg-black opacity-30 pointer-events-none"></div>
+      </motion.div>
       
       {/* Content - restore pointer events for children */}
       <div className="relative z-10 w-full h-full" style={{ pointerEvents: 'auto' }}>
