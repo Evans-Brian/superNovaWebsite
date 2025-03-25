@@ -253,8 +253,8 @@ export default function RippleSupernovaBg({
       ctx.fillStyle = gradientRef.current;
       ctx.fillRect(0, 0, width, height);
       
-      // Only draw grid if it has some opacity
-      if (gridOpacityRef.current > 0.01) {
+        // Only draw grid if it has some opacity
+        if (gridOpacityRef.current > 0.01) {
         const gridSize = 50;
         const gridSpacing = width / gridSize;
         
@@ -319,35 +319,10 @@ export default function RippleSupernovaBg({
       }
       
       // Update trails max length - reduced by 60%
-      const MAX_TRAIL_LENGTH = 3; // Minimum needed for visibility while keeping trails short
+      const MAX_TRAIL_LENGTH = 1; // Minimum needed for visibility while keeping trails short
       
       // Update and draw particles
       particlesRef.current.forEach(particle => {
-        // Store previous position for trail if the particle is in the warp field
-        const { strength } = getDistortionFactors(
-          particle.x, particle.y, mousePos.current.x, mousePos.current.y
-        );
-        
-        // No need to save previous velocities since they aren't used
-        
-        // Only add to trail if particle is affected by warp
-        if (strength > 0.1 && isMouseActiveRef.current) {
-          // Add current position to trail with reduced initial opacity
-          particle.trail.push({
-            x: particle.x,
-            y: particle.y,
-            opacity: 0.3 * particle.opacity // Reduced from 0.5 to 0.3 (40% reduction)
-          });
-           
-          // Limit trail length
-          if (particle.trail.length > MAX_TRAIL_LENGTH) {
-            particle.trail.shift();
-          }
-        } else {
-          // Clear trail when particle is not affected
-          particle.trail = [];
-        }
-        
         // Natural particle movement (slight drift upward)
         particle.y -= particle.speed * 0.5;
         particle.x += Math.sin(particle.y * 0.01) * 0.3;
@@ -365,14 +340,15 @@ export default function RippleSupernovaBg({
         let finalX = particle.x;
         let finalY = particle.y;
         
+        // Get distortion parameters
+        const { strength, distance, normalizedDx, normalizedDy } = getDistortionFactors(
+          particle.x, particle.y, mousePos.current.x, mousePos.current.y
+        );
+        
         if (isMouseActiveRef.current) {
-          const { strength, distance, normalizedDx, normalizedDy } = getDistortionFactors(
-            particle.x, particle.y, mousePos.current.x, mousePos.current.y
-          );
-          
           // Create a non-linear distortion effect
           // Particles closer to the mouse are affected more dramatically
-          const distortionStrength = Math.pow(strength, 1.5) * 120;
+          const distortionStrength = Math.pow(strength, 1.5) * 80;
           
           // Store velocities for doppler effect
           particle.vx = -normalizedDx * distortionStrength * 0.1;
@@ -396,15 +372,41 @@ export default function RippleSupernovaBg({
             finalX = mousePos.current.x + relX * cos - relY * sin;
             finalY = mousePos.current.y + relX * sin + relY * cos;
           }
+          
+          // Add to trail regardless of strength, but only if mouse is active
+          // IMPORTANT: Use finalX/finalY to store the DISTORTED position
+          particle.trail.push({
+            x: finalX,
+            y: finalY,
+            opacity: 0.5 * particle.opacity // Increased opacity for better visibility
+          });
+          
+          // Limit trail length
+          if (particle.trail.length > MAX_TRAIL_LENGTH) {
+            particle.trail.shift();
+          }
+        } else {
+          // When mouse is inactive, let trails fade naturally without clearing them
+          // This makes trails persist longer after mouse movement stops
+          
+          // Only shift out oldest trail positions if trail is too long
+          if (particle.trail.length > MAX_TRAIL_LENGTH) {
+            particle.trail.shift();
+          }
         }
         
         // Draw particle trail first (behind the particle)
-        if (particle.trail.length > 1 && isMouseActiveRef.current) {
-          // Apply trail damping - fade older points more quickly
+        // Always draw trails if they exist - removed isMouseActiveRef.current check
+        if (particle.trail.length > 1) {
+          // Apply trail damping - fade older points more slowly
           for (let i = 0; i < particle.trail.length; i++) {
-            // The damping factor (0.6) determines how quickly the trail fades
-            // Lower values = shorter-looking trails with aggressive fade
-            const ageFactor = Math.pow(0.6, (particle.trail.length - i));
+            // The damping factor determines how quickly the trail fades
+            // Higher values = longer-lasting trails with gentler fade
+            // Range: 0.1 (very fast fade) to 0.99 (almost no fade)
+            
+            // Use a higher damping factor when mouse is inactive for slower fade
+            const dampingFactor = isMouseActiveRef.current ? 0.85 : 0.97;
+            const ageFactor = Math.pow(dampingFactor, (particle.trail.length - i));
             particle.trail[i].opacity *= ageFactor;
           }
           
@@ -442,10 +444,6 @@ export default function RippleSupernovaBg({
         
         // Add stretched effect to particles in warp field
         if (isMouseActiveRef.current) {
-          const { strength } = getDistortionFactors(
-            particle.x, particle.y, mousePos.current.x, mousePos.current.y
-          );
-          
           if (strength > 0.1) {
             // Calculate stretch direction - away from mouse
             const stretchDirection = Math.atan2(
