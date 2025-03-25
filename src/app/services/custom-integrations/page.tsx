@@ -24,7 +24,14 @@ export default function CustomIntegrationsPage() {
       </section>
 
       {/* Overview Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-gray-800 relative">
+        {/* Top border glow */}
+        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+          style={{
+            animation: 'borderGlowPulse 6s infinite',
+            zIndex: 5
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -53,7 +60,14 @@ export default function CustomIntegrationsPage() {
       </section>
 
       {/* Integration Types Section */}
-      <section className="py-16 bg-gray-950">
+      <section className="py-16 bg-gray-950 relative">
+        {/* Top border glow */}
+        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+          style={{
+            animation: 'borderGlowPulse 6s infinite',
+            zIndex: 5
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Integration Types</h2>
@@ -139,7 +153,14 @@ export default function CustomIntegrationsPage() {
       </section>
 
       {/* Common Integrations Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-gray-800 relative">
+        {/* Top border glow */}
+        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+          style={{
+            animation: 'borderGlowPulse 6s infinite',
+            zIndex: 5
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Common Integration Scenarios</h2>
@@ -323,11 +344,18 @@ export default function CustomIntegrationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 text-white" style={{ 
+      <section className="py-16 text-white relative" style={{ 
         backgroundImage: 'url(/supernova-bottom.svg)',
         backgroundSize: 'cover',
         backgroundPosition: 'bottom center'
       }}>
+        {/* Top border glow */}
+        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+          style={{
+            animation: 'borderGlowPulse 6s infinite',
+            zIndex: 5
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Connect Your Systems?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">

@@ -20,7 +20,14 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-gray-800 relative">
+        {/* Top border glow */}
+        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+          style={{
+            animation: 'borderGlowPulse 6s infinite',
+            zIndex: 5
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
@@ -53,11 +60,7 @@ export default function ContactPage() {
                     <p>supernovaautomations@gmail.com</p>
                   </div>
                 </div>
-                
-                {/* Address section removed */}
               </div>
-              
-              {/* Social media section removed */}
             </div>
             
             <div>
@@ -66,8 +69,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Map Section removed */}
     </div>
   );
 }
