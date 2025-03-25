@@ -107,7 +107,7 @@ export default function FeatureCardGrid() {
             </svg>
           }
           title="Expert Team"
-          description="We bring years of experience in automation and engineering."
+          description="We bring years of experience in automation and engineering solutions."
         />
         
         <FeatureCard

@@ -318,8 +318,8 @@ export default function RippleSupernovaBg({
         }
       }
       
-      // Update trails max length - reduced by 70%
-      const MAX_TRAIL_LENGTH = 2; // Was 5, now ~30% (1.5) rounded up to 2
+      // Update trails max length - reduced by 60%
+      const MAX_TRAIL_LENGTH = 3; // Minimum needed for visibility while keeping trails short
       
       // Update and draw particles
       particlesRef.current.forEach(particle => {
@@ -332,13 +332,13 @@ export default function RippleSupernovaBg({
         
         // Only add to trail if particle is affected by warp
         if (strength > 0.1 && isMouseActiveRef.current) {
-          // Add current position to trail
+          // Add current position to trail with reduced initial opacity
           particle.trail.push({
             x: particle.x,
             y: particle.y,
-            opacity: 0.5 * particle.opacity
+            opacity: 0.3 * particle.opacity // Reduced from 0.5 to 0.3 (40% reduction)
           });
-          
+           
           // Limit trail length
           if (particle.trail.length > MAX_TRAIL_LENGTH) {
             particle.trail.shift();
@@ -400,6 +400,14 @@ export default function RippleSupernovaBg({
         
         // Draw particle trail first (behind the particle)
         if (particle.trail.length > 1 && isMouseActiveRef.current) {
+          // Apply trail damping - fade older points more quickly
+          for (let i = 0; i < particle.trail.length; i++) {
+            // The damping factor (0.6) determines how quickly the trail fades
+            // Lower values = shorter-looking trails with aggressive fade
+            const ageFactor = Math.pow(0.6, (particle.trail.length - i));
+            particle.trail[i].opacity *= ageFactor;
+          }
+          
           ctx.beginPath();
           ctx.moveTo(particle.trail[0].x, particle.trail[0].y);
           
@@ -423,7 +431,7 @@ export default function RippleSupernovaBg({
           
           ctx.strokeStyle = trailGradient;
           // Reduced by 70%
-          ctx.lineWidth = particle.size * 0.21; // 0.7 * 0.3 = 0.21
+          ctx.lineWidth = particle.size * 0.4; // 0.7 * 0.3 = 0.21
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
           ctx.stroke();
