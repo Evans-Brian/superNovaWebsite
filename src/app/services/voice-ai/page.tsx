@@ -2,6 +2,7 @@ import VideoCard from '@/components/VideoCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
+import StarfieldBackground from '@/components/StarfieldBackground';
 
 export default function VoiceAIPage() {
   return (
@@ -59,36 +60,38 @@ export default function VoiceAIPage() {
       </section>
 
       {/* Video Demos Section */}
-      <section className="py-16 bg-gray-900 relative">
-        {/* Top border glow */}
-        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
-          style={{
-            animation: 'borderGlowPulse 6s infinite',
-            zIndex: 5
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">See Voice Agent in Action</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Watch our demo videos to see how our Voice Agent solutions can transform your business. Want to try it out? Click &quot;Call Now&quot; to speak to the agent.
-            </p>
+      <StarfieldBackground>
+        <section className="py-16 relative">
+          {/* Top border glow */}
+          <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+            style={{
+              animation: 'borderGlowPulse 6s infinite',
+              zIndex: 5
+            }}
+          />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">See Voice Agent in Action</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Watch our demo videos to see how our Voice Agent solutions can transform your business. Want to try it out? Click &quot;Call Now&quot; to speak to the agent.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <VideoCard 
+                title="Dental Office Scheduling Agent" 
+                videoId="OdxqYRDl7TI" 
+                description="Watch our AI assistant handle appointment scheduling for a dental office, providing a seamless experience for patients."
+              />
+              <VideoCard 
+                title="Locksmith Job Booking Agent" 
+                videoId="u86h6B4IU-8" 
+                description="See how our Voice Agent system manages locksmith service bookings, efficiently handling customer requests and scheduling."
+              />
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <VideoCard 
-              title="Dental Office Scheduling Agent" 
-              videoId="OdxqYRDl7TI" 
-              description="Watch our AI assistant handle appointment scheduling for a dental office, providing a seamless experience for patients."
-            />
-            <VideoCard 
-              title="Locksmith Job Booking Agent" 
-              videoId="u86h6B4IU-8" 
-              description="See how our Voice Agent system manages locksmith service bookings, efficiently handling customer requests and scheduling."
-            />
-          </div>
-        </div>
-      </section>
+        </section>
+      </StarfieldBackground>
 
       {/* Features Section */}
       <section className="py-16 bg-gray-800 relative">

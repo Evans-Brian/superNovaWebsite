@@ -3,6 +3,7 @@ import Image from 'next/image';
 import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
 import BenefitsWrapper from '@/components/BenefitsWrapper';
 import ApproachWrapper from '@/components/ApproachWrapper';
+import StarfieldBackground from '@/components/StarfieldBackground';
 
 export default function CustomIntegrationsPage() {
   return (
@@ -60,23 +61,24 @@ export default function CustomIntegrationsPage() {
       </section>
 
       {/* Integration Types Section */}
-      <section className="py-16 bg-gray-950 relative">
-        {/* Top border glow */}
-        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
-          style={{
-            animation: 'borderGlowPulse 6s infinite',
-            zIndex: 5
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Integration Types</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We offer a variety of integration approaches to meet your specific business requirements.
-            </p>
-          </div>
-          
-          <KeyFeaturesWrapper columns={3}>
+      <StarfieldBackground>
+        <section className="py-16 relative">
+          {/* Top border glow */}
+          <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
+            style={{
+              animation: 'borderGlowPulse 6s infinite',
+              zIndex: 5
+            }}
+          />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Integration Types</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                We offer a variety of integration approaches to meet your specific business requirements.
+              </p>
+            </div>
+            
+            <KeyFeaturesWrapper columns={3}>
             <div>
               <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,8 +151,9 @@ export default function CustomIntegrationsPage() {
               </p>
             </div>
           </KeyFeaturesWrapper>
-        </div>
-      </section>
+          </div>
+        </section>
+      </StarfieldBackground>
 
       {/* Common Integrations Section */}
       <section className="py-16 bg-gray-800 relative">
@@ -294,7 +297,7 @@ export default function CustomIntegrationsPage() {
               <div className="flex items-center justify-center w-12 h-12 rounded-full text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
                 <span className="text-xl font-bold">2</span>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Solution Design</h3>
+              <h3  className="text-xl font-semibold text-white mb-2">Solution Design</h3>
               <p className="text-gray-300">
                 Based on our analysis, we design a comprehensive integration solution that addresses your specific needs, including architecture, data mapping, transformation rules, and error handling.
               </p>
