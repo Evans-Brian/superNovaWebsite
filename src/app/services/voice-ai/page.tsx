@@ -3,17 +3,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
 import StarfieldBackground from '@/components/StarfieldBackground';
+import AsteroidEffect from '@/components/AsteroidEffect';
 
 export default function VoiceAIPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-white py-16" style={{ 
-        backgroundImage: 'url(/supernova-top.svg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'top center'
-      }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="text-white py-16 relative min-h-[400px] flex items-center">
+        {/* Black background with asteroid effect covering entire section */}
+        <div className="absolute inset-0 bg-black overflow-hidden" style={{ minHeight: '400px' }}>
+          <AsteroidEffect className="w-full h-full" />
+        </div>
+        
+        {/* Content overlay */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Voice Agent Solutions</h1>
             <p className="text-xl max-w-3xl mx-auto">
