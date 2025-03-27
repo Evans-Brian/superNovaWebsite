@@ -3,17 +3,17 @@ import Image from 'next/image';
 import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
 import BenefitsWrapper from '@/components/BenefitsWrapper';
 import StarfieldBackground from '@/components/StarfieldBackground';
+import AsteroidField from '@/components/AsteroidField';
 
 export default function ProcessAutomationsPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-white py-16" style={{ 
-        backgroundImage: 'url(/supernova-top.svg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'top center'
-      }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="text-white py-16 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-900 to-black">
+          <AsteroidField className="w-full h-full" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Process Automations</h1>
             <p className="text-xl max-w-3xl mx-auto">

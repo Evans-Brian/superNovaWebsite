@@ -33,13 +33,18 @@ export default function AsteroidField({
 
     // Returns a pseudo random number for a given point (value noise)
     float noise(in vec2 p) {
-      vec2 i=floor(p), f=fract(p), u=f*f*(3.-2.*f);
-      float
-      a=rnd(i),
-      b=rnd(i+vec2(1,0)),
-      c=rnd(i+vec2(0,1)),
-      d=rnd(i+1.));
-      return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
+      vec2 i = floor(p);
+      vec2 f = fract(p);
+      vec2 u = f*f*(3.0-2.0*f);
+      
+      float a = rnd(i);
+      float b = rnd(i + vec2(1.0, 0.0));
+      float c = rnd(i + vec2(0.0, 1.0));
+      float d = rnd(i + vec2(1.0, 1.0));
+      
+      return mix(mix(a, b, u.x), 
+                mix(c, d, u.x), 
+                u.y);
     }
 
     // Returns a pseudo random number for a given point (fractal noise)
@@ -82,13 +87,19 @@ export default function AsteroidField({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      console.log('AsteroidField: Canvas ref not available');
+      return;
+    }
 
     const gl = canvas.getContext('webgl');
     if (!gl) {
       console.error('WebGL not supported');
+      console.log('AsteroidField: WebGL context creation failed');
       return;
     }
+
+    console.log('AsteroidField: WebGL context created successfully');
 
     // Resize canvas to match display size
     const displayWidth = canvas.clientWidth;
@@ -226,16 +237,32 @@ export default function AsteroidField({
     };
   }, []);
 
+  const [webGLAvailable, setWebGLAvailable] = React.useState(true);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const gl = canvasRef.current.getContext('webgl');
+      setWebGLAvailable(!!gl);
+    }
+  }, []);
+
   return (
-    <canvas 
-      ref={canvasRef}
-      className={className}
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        backgroundColor: 'transparent',
-        display: 'block',
-      }}
-    />
+    <>
+      <canvas 
+        ref={canvasRef}
+        className={className}
+        style={{ 
+          width: '100%', 
+          height: '100%', 
+          backgroundColor: 'transparent',
+          display: 'block',
+        }}
+      />
+      {!webGLAvailable && (
+        <div className="absolute inset-0 bg-purple-900 text-white flex items-center justify-center">
+          WebGL not supported - Asteroid effect unavailable
+        </div>
+      )}
+    </>
   );
 }
