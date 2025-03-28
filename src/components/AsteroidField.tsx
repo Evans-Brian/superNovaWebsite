@@ -3,14 +3,10 @@
 import React, { useEffect, useRef } from 'react';
 
 interface AsteroidFieldProps {
-  width?: number;
-  height?: number;
   className?: string;
 }
 
 export default function AsteroidField({ 
-  width = 300, 
-  height = 300,
   className = ""
 }: AsteroidFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -85,6 +81,7 @@ export default function AsteroidField({
     }
   `;
 
+   
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) {
@@ -167,7 +164,7 @@ export default function AsteroidField({
     const timeUniformLocation = gl.getUniformLocation(program, 'u_time');
 
     // Animation loop
-    const render = (timestamp: number) => {
+    const render = () => {
       const elapsedTime = (Date.now() - startTimeRef.current) / 1000;
       
       // Clear with transparent background
@@ -204,9 +201,10 @@ export default function AsteroidField({
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);
     };
-  }, []);
+  }, [fragmentShaderSource, vertexShaderSource]);
 
   // Handle canvas resize
+   
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -218,7 +216,6 @@ export default function AsteroidField({
       const container = canvas.parentElement;
       if (!container) return;
       
-      const dpr = window.devicePixelRatio || 1;
       const displayWidth = Math.floor(container.clientWidth);
       const displayHeight = Math.floor(container.clientHeight);
       
@@ -235,7 +232,7 @@ export default function AsteroidField({
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [fragmentShaderSource, vertexShaderSource]);
 
   const [webGLAvailable, setWebGLAvailable] = React.useState(true);
 

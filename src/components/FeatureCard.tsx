@@ -21,7 +21,7 @@ const FeatureCard = forwardRef<HTMLDivElement, FeatureCardProps>(
     const equalizeCardHeights = () => {
       if (ref && 'current' in ref && ref.current) {
         // Find the parent section element (usually a div with grid class)
-        let parentSection = ref.current.closest('.grid') || ref.current.parentElement;
+        const parentSection = ref.current.closest('.grid') || ref.current.parentElement;
         
         if (parentSection) {
           // Find all cards with the same data-card-type in this section

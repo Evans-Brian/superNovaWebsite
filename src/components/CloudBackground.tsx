@@ -3,14 +3,10 @@
 import React, { useEffect, useRef } from 'react';
 
 interface CloudBackgroundProps {
-  width?: number;
-  height?: number;
   className?: string;
 }
 
 export default function CloudBackground({ 
-  width = 300, 
-  height = 300,
   className = ""
 }: CloudBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -157,7 +153,7 @@ export default function CloudBackground({
     const timeUniformLocation = gl.getUniformLocation(program, 'u_time');
 
     // Animation loop
-    const render = (timestamp: number) => {
+    const render = () => {
       const elapsedTime = (Date.now() - startTimeRef.current) / 1000;
       
       gl.clearColor(0.02, 0.01, 0.05, 1);
@@ -193,7 +189,7 @@ export default function CloudBackground({
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);
     };
-  }, []);
+  }, [fragmentShaderSource, vertexShaderSource]);
 
   // Handle canvas resize
   useEffect(() => {
@@ -207,7 +203,6 @@ export default function CloudBackground({
       const container = canvas.parentElement;
       if (!container) return;
       
-      const dpr = window.devicePixelRatio || 1;
       const displayWidth = Math.floor(container.clientWidth);
       const displayHeight = Math.floor(container.clientHeight);
       
@@ -224,7 +219,7 @@ export default function CloudBackground({
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [fragmentShaderSource, vertexShaderSource]);
 
   return (
     <canvas 

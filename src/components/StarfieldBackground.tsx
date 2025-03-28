@@ -18,7 +18,6 @@ export default function StarfieldBackground({ children }: StarfieldBackgroundPro
     
     // Configuration
     const numStars = 1200;
-    const radius = '0.' + Math.floor(Math.random() * 9) + 1;
     let focalLength = canvas.width * 2;
     let centerX: number, centerY: number;
     

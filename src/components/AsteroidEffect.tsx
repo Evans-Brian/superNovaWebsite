@@ -3,14 +3,10 @@
 import React, { useEffect, useRef } from 'react';
 
 interface AsteroidEffectProps {
-  width?: number;
-  height?: number;
   className?: string;
 }
 
 export default function AsteroidEffect({ 
-  width = 300, 
-  height = 300,
   className = ""
 }: AsteroidEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -172,7 +168,7 @@ export default function AsteroidEffect({
     const timeUniformLocation = gl.getUniformLocation(program, 'u_time');
 
     // Animation loop
-    const render = (timestamp: number) => {
+  const render = () => {
       // Update time uniform
       const elapsedTime = (Date.now() - startTimeRef.current) / 1000; // Seconds
       
@@ -222,7 +218,7 @@ export default function AsteroidEffect({
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);
     };
-  }, []);
+  }, [fragmentShaderSource, vertexShaderSource]);
 
   // This useEffect handles the canvas resize based on its container
   useEffect(() => {
@@ -238,10 +234,7 @@ export default function AsteroidEffect({
       const container = canvas.parentElement;
       if (!container) return;
       
-      // Get the device pixel ratio for high DPI displays
-      const dpr = window.devicePixelRatio || 1;
-      
-      // Use the dimensions of the container multiplied by device pixel ratio
+      // Use the dimensions of the container
       const displayWidth = Math.floor(container.clientWidth);
       const displayHeight = Math.floor(container.clientHeight);
       
@@ -266,7 +259,7 @@ export default function AsteroidEffect({
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [fragmentShaderSource, vertexShaderSource]);
 
   return (
     <canvas 

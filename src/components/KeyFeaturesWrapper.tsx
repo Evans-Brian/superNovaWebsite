@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface CardWrapperProps {

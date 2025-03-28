@@ -35,7 +35,7 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
   const equalizeCardHeights = useCallback(() => {
     if (cardRef.current) {
       // Find the parent section element (usually a div with grid class)
-      let parentSection = cardRef.current.closest('.grid') || cardRef.current.parentElement;
+      const parentSection = cardRef.current.closest('.grid') || cardRef.current.parentElement;
       
       if (parentSection) {
         // Find all cards with the same data-card-type in this section

@@ -1,19 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 interface HolographicProjectionTextProps {
   children: string;
-  delay?: number;
 }
 
 export function HolographicProjectionText({
-  children,
-  delay = 0
+  children
 }: HolographicProjectionTextProps) {
   const controls = useAnimation();
-  const [key, setKey] = useState(0);
   // Split into words to prevent word breaks
   const words = children.split(' ');
   
@@ -47,9 +44,6 @@ export function HolographicProjectionText({
     };
   }, [controls, children, resetKey]); // Add resetKey dependency to force effect to run on remount
 
-  // Calculate total container width with a multiplier to account for the scan line's longer travel distance
-  const containerWidth = 110; // Represents the 110% width the scan line travels
-  
   // Text variants for the hologram effect - synced with scan line
   const textVariants = {
     hidden: {
@@ -189,7 +183,7 @@ export function HolographicProjectionText({
   };
 
   return (
-    <div className="relative inline-block p-4 rounded-md" key={key}>
+    <div className="relative inline-block p-4 rounded-md">
       {/* Background glow */}
       <motion.div
         initial="hidden"
