@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
-import BenefitsWrapper from '@/components/BenefitsWrapper';
-import StarfieldBackground from '@/components/StarfieldBackground';
-import AsteroidField from '@/components/AsteroidField';
+import KeyFeaturesWrapper from '../../../components/KeyFeaturesWrapper';
+import BenefitsWrapper from '../../../components/BenefitsWrapper';
+import StarfieldBackground from '../../../components/StarfieldBackground';
+import AsteroidField from '../../../components/AsteroidField';
+// Remove any NebulaFormationText imports
 
 export default function ProcessAutomationsPage() {
   return (
@@ -15,14 +16,17 @@ export default function ProcessAutomationsPage() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Process Automations</h1>
+            <h1 className="text-4xl font-bold mb-4">
+              Process Automations
+            </h1>
             <p className="text-xl max-w-3xl mx-auto">
-              Streamline your operations, reduce manual tasks, and boost productivity with intelligent process automation.
+              Launch your workflows into orbit with AI-powered automation that eliminates friction, accelerates operations, and propels productivity to new heights.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Rest of the existing file content remains exactly the same */}
       {/* Overview Section */}
       <section className="py-16 bg-gray-800 relative">
         {/* Top border glow */}
@@ -43,7 +47,7 @@ export default function ProcessAutomationsPage() {
                 By automating manual processes, your team can focus on high-value activities that drive innovation and growth, while reducing errors and improving consistency.
               </p>
               <p className="text-gray-300">
-                Whether you&apos;re looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
+                Whether you're looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
               </p>
             </div>
             <div className="bg-gray-800 rounded-lg h-80 flex items-center justify-center overflow-hidden">
