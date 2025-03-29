@@ -48,3 +48,36 @@ body {
     box-shadow: 0 0 10px 2.5px rgba(102, 57, 218, 0.6), 0 0 15px 4px rgba(102, 57, 218, 0.4);
   }
 }
+
+/* Aurora animation for the Aurora Background component */
+@keyframes aurora {
+  0% {
+    background-position: 0% 0%, 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%, 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%, 0% 0%;
+  }
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  .animate-aurora {
+    animation: aurora 15s ease infinite;
+  }
+  
+  /* CSS Variables used by the Aurora component */
+  :root {
+    --white: rgba(255, 255, 255, 0.8);
+    --black: rgba(0, 0, 0, 0.8);
+    --transparent: transparent;
+    --blue-300: #93c5fd;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --indigo-300: #a5b4fc;
+    --violet-200: #ddd6fe;
+  }
+}

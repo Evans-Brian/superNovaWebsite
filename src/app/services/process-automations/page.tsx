@@ -4,19 +4,13 @@ import KeyFeaturesWrapper from '../../../components/KeyFeaturesWrapper';
 import BenefitsWrapper from '../../../components/BenefitsWrapper';
 import StarfieldBackground from '../../../components/StarfieldBackground';
 import { AnimatedHeadline } from '../../../components/text-effects/AnimatedHeadline';
+import { AuroraBackground } from '../../../components/aurora-background';
 
 export default function ProcessAutomationsPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-white py-16 relative min-h-[400px] flex items-center">
-        {/* Black background with gradient effect */}
-        <div className="absolute inset-0 bg-black overflow-hidden" style={{ minHeight: '400px' }}>
-          {/* Enhanced background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black opacity-80"></div>
-        </div>
-        
-        {/* Content overlay */}
+      <AuroraBackground className="text-white py-16 min-h-[400px] h-auto flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="text-4xl font-bold mb-4">
@@ -27,7 +21,7 @@ export default function ProcessAutomationsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </AuroraBackground>
 
       {/* Overview Section */}
       <section className="py-16 bg-gray-800 relative">
