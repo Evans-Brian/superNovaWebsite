@@ -8,6 +8,13 @@
   --white: rgba(255, 255, 255, 0.8);
   --black: rgba(0, 0, 0, 0.8);
   --transparent: transparent;
+  
+  /* Missing Aurora color variables */
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --indigo-300: #a5b4fc;
+  --violet-200: #ddd6fe;
 }
 
 @theme inline {
@@ -54,6 +61,35 @@ body {
   }
 }
 
+/* Aurora animation for the background effect */
+@keyframes aurora {
+  0% {
+    background-position: 0% 0%, 0% 0%;
+  }
+  25% {
+    background-position: 50% 25%, 50% 25%;
+  }
+  50% {
+    background-position: 100% 50%, 100% 50%;
+  }
+  75% {
+    background-position: 50% 75%, 50% 75%;
+  }
+  100% {
+    background-position: 0% 100%, 0% 100%;
+  }
+}
+
 /* Custom animation classes outside of layer blocks */
+.animate-aurora {
+  animation: aurora 60s ease-in-out infinite;
+  will-change: background-position;
+}
+
+/* Force animation on Aurora background for debugging */
+.aurora-background-main::after,
+.aurora-background-main > div::after {
+  animation: aurora 60s ease-in-out infinite !important;
+}
 
 @tailwind utilities;
