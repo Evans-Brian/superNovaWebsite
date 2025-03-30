@@ -30,7 +30,16 @@ const CardWrapper = React.forwardRef<HTMLDivElement, CardWrapperProps>(
           inactiveZone={0.01}
           borderWidth={3}
         />
-        <div className={`relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] bg-gray-900 shadow-sm card-content ${className}`}>
+        <div 
+          className={`relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] shadow-md card-content ${className}`}
+          style={{ 
+            backgroundColor: '#e6eeff',
+            backgroundImage: `
+              radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.08), transparent 60%),
+              radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.06), transparent 50%)
+            `
+          }}
+        >
           {children}
         </div>
       </div>

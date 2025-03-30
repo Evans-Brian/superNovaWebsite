@@ -4,7 +4,10 @@ import HeroSection from "@/components/HeroSection";
 import NebulaDepthCard from "@/components/NebulaDepthCard";
 import FeatureCardGrid from "@/components/FeatureCardGrid";
 import StarfieldBackground from "@/components/StarfieldBackground";
+import SpaceBackground from "@/components/SpaceBackground";
+import BorderGlow from "@/components/ui/BorderGlow";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
   return (
@@ -12,26 +15,11 @@ export default function Home() {
       <HeroSection />
       
       {/* Services Section */}
-      <section className="py-16 bg-gray-800 text-white relative">
-        {/* Top border - only pulsing glow, flush with edge */}
-        <div className="absolute top-0 left-0 right-0 h-0 pointer-events-none" 
-          style={{
-            animation: 'borderGlowPulse 6s infinite',
-            zIndex: 5
-          }}
-        />
-        
-        {/* Bottom border - only pulsing glow, flush with edge */}
-        <div className="absolute bottom-0 left-0 right-0 h-0 pointer-events-none"
-          style={{
-            animation: 'borderGlowPulse 6s infinite',
-            zIndex: 5
-          }}
-        />
+      <SpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Services</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               We offer a range of automation solutions to help your business operate more efficiently and effectively.
             </p>
           </div>
@@ -57,17 +45,12 @@ export default function Home() {
             />
           </div>
         </div>
-      </section>
+      </SpaceBackground>
       
       {/* Why Choose Us Section */}
       <section className="text-white relative">
         {/* Bottom border - only pulsing glow, flush with edge */}
-        <div className="absolute bottom-0 left-0 right-0 h-0 pointer-events-none"
-          style={{
-            animation: 'borderGlowPulse 6s infinite',
-            zIndex: 10 /* Higher z-index to appear above StarfieldBackground */
-          }}
-        />
+        <BorderGlow position="bottom" zIndex={10} />
         <StarfieldBackground>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center mb-12">

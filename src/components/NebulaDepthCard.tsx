@@ -232,7 +232,8 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
           height: sectionCardsHeight ? `${sectionCardsHeight}px` : '100%',
           transform: getTransform(),
           transformStyle: 'preserve-3d',
-          transition: 'transform 0.2s ease-out'
+          transition: 'transform 0.2s ease-out',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'
         }}
         data-card-type="Our Services Service Cards"
         onMouseEnter={() => setIsHovered(true)}
@@ -332,8 +333,10 @@ export default function NebulaDepthCard({ title, description, icon, link }: Nebu
         <div 
           className="absolute inset-0 rounded-lg pointer-events-none transition-opacity duration-300"
           style={{
-            boxShadow: 'inset 0 0 20px rgba(102, 57, 218, 0.5)',
-            opacity: isHovered ? 0.8 : 0,
+            boxShadow: isHovered 
+              ? 'inset 0 0 20px rgba(102, 57, 218, 0.7), 0 0 15px rgba(102, 57, 218, 0.4)' 
+              : 'inset 0 0 20px rgba(102, 57, 218, 0.5)',
+            opacity: isHovered ? 0.9 : 0.2, // Slightly visible even when not hovered
             zIndex: 5
           }}
         />

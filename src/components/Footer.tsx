@@ -45,7 +45,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>Email: supernovaautomations@gmail.com</p>
+              <p>Email: letsbuild@supernovaautomations.com</p>
               <p>Phone: (330) 357-9229</p>
             </address>
           </div>
