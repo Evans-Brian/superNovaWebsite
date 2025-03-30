@@ -3,28 +3,35 @@ import Link from 'next/link';
 import Image from 'next/image';
 import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
 import StarfieldBackground from '@/components/StarfieldBackground';
-import AsteroidEffect from '@/components/AsteroidEffect';
+import { AnimatedHeadline } from '@/components/text-effects/AnimatedHeadline';
+import { AuroraBackground } from '@/components/aurora-background';
 
 export default function VoiceAIPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-white py-16 relative min-h-[400px] flex items-center">
-        {/* Black background with asteroid effect covering entire section */}
-        <div className="absolute inset-0 bg-black overflow-hidden" style={{ minHeight: '400px' }}>
-          <AsteroidEffect className="w-full h-full" />
-        </div>
-        
-        {/* Content overlay */}
+      <AuroraBackground className="text-white py-16 min-h-[400px] h-auto flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Voice Agent Solutions</h1>
-            <p className="text-xl max-w-3xl mx-auto">
-              Transform your customer interactions and streamline operations with our cutting-edge Voice Agent technology.
+            <h1 className="text-5xl font-bold mb-6">
+              <AnimatedHeadline 
+                text="Voice Agent Solutions" 
+                delay={0.2}
+                duration={0.9}
+                distance={25}
+              />
+            </h1>
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed">
+              <AnimatedHeadline 
+                text="Transform your customer interactions and streamline operations with our cutting-edge Voice Agent technology." 
+                delay={0.5}
+                duration={1.0}
+                distance={30}
+              />
             </p>
           </div>
         </div>
-      </section>
+      </AuroraBackground>
 
       {/* Overview Section */}
       <section className="py-16 bg-gray-800 relative">
