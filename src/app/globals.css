@@ -9,12 +9,17 @@
   --black: rgba(0, 0, 0, 0.8);
   --transparent: transparent;
   
-  /* Missing Aurora color variables */
+  /* Aurora color variables - adjusted for natural light effect */
   --blue-300: #93c5fd;
   --blue-400: #60a5fa;
   --blue-500: #3b82f6;
   --indigo-300: #a5b4fc;
-  --violet-200: #ddd6fe;
+  --indigo-500: #6366f1;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --purple-500: rgba(102, 57, 218, 0.7); /* Original purple from the site */
+  --purple-600: rgba(88, 28, 211, 0.7); /* Darker shade of the original purple */
+  --ambient-light: rgba(180, 180, 255, 0.03); /* Very subtle ambient light */
 }
 
 @theme inline {
@@ -64,19 +69,19 @@ body {
 /* Aurora animation for the background effect */
 @keyframes aurora {
   0% {
-    background-position: 0% 0%, 0% 0%;
+    background-position: 0% 0%, 0% 0%, 0% 0%;
   }
   25% {
-    background-position: 50% 25%, 50% 25%;
+    background-position: 50% 25%, 0% 0%, 50% 25%;
   }
   50% {
-    background-position: 100% 50%, 100% 50%;
+    background-position: 100% 50%, 0% 0%, 100% 50%;
   }
   75% {
-    background-position: 50% 75%, 50% 75%;
+    background-position: 50% 75%, 0% 0%, 50% 75%;
   }
   100% {
-    background-position: 0% 100%, 0% 100%;
+    background-position: 0% 100%, 0% 0%, 0% 100%;
   }
 }
 
@@ -90,6 +95,16 @@ body {
 .aurora-background-main::after,
 .aurora-background-main > div::after {
   animation: aurora 60s ease-in-out infinite !important;
+}
+
+/* Special ambient glow effect for aurora */
+.aurora-background-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, var(--ambient-light) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 @tailwind utilities;

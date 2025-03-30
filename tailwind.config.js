@@ -17,10 +17,19 @@ module.exports = {
           500: "#3b82f6"
         },
         indigo: {
-          300: "#a5b4fc"
+          300: "#a5b4fc",
+          500: "#6366f1"
         },
         violet: {
-          200: "#ddd6fe"
+          400: "#a78bfa",
+          500: "#8b5cf6"
+        },
+        purple: {
+          500: "rgba(102, 57, 218, 0.7)",
+          600: "rgba(88, 28, 211, 0.7)"
+        },
+        ambient: {
+          light: "rgba(180, 180, 255, 0.03)"
         }
       },
       animation: {
@@ -29,19 +38,19 @@ module.exports = {
       keyframes: {
         aurora: {
           "0%": {
-            backgroundPosition: "0% 0%, 0% 0%",
+            backgroundPosition: "0% 0%, 0% 0%, 0% 0%",
           },
           "25%": {
-            backgroundPosition: "50% 25%, 50% 25%",
+            backgroundPosition: "50% 25%, 0% 0%, 50% 25%",
           },
           "50%": {
-            backgroundPosition: "100% 50%, 100% 50%",
+            backgroundPosition: "100% 50%, 0% 0%, 100% 50%",
           },
           "75%": {
-            backgroundPosition: "50% 75%, 50% 75%",
+            backgroundPosition: "50% 75%, 0% 0%, 50% 75%",
           },
           "100%": {
-            backgroundPosition: "0% 100%, 0% 100%",
+            backgroundPosition: "0% 100%, 0% 0%, 0% 100%",
           },
         },
       },

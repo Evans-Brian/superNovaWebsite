@@ -14,10 +14,20 @@ export default function ProcessAutomationsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-5xl font-bold mb-6">
-              <AnimatedHeadline text="Process Automations" />
+              <AnimatedHeadline 
+                text="Process Automations" 
+                delay={0.2}
+                duration={0.9}
+                distance={25}
+              />
             </h1>
             <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-              <AnimatedHeadline text="Launch your workflows into orbit with AI-powered automation that eliminates friction, accelerates operations, and propels productivity to new heights." />
+              <AnimatedHeadline 
+                text="Launch your workflows into orbit with AI-powered automation that eliminates friction, accelerates operations, and propels productivity to new heights." 
+                delay={0.5}
+                duration={1.0}
+                distance={30}
+              />
             </p>
           </div>
         </div>

@@ -1,23 +1,33 @@
 import Link from 'next/link';
+import { AnimatedHeadline } from '../../components/text-effects/AnimatedHeadline';
+import { AuroraBackground } from '../../components/aurora-background';
 
 export default function AboutPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-white py-16" style={{ 
-        backgroundImage: 'url(/supernova-top.svg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'top center'
-      }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AuroraBackground className="text-white py-16 min-h-[400px] h-auto flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">About SuperNova Automations</h1>
-            <p className="text-xl max-w-3xl mx-auto">
-              We&apos;re a team of automation experts dedicated to helping businesses leverage the power of technology.
+            <h1 className="text-5xl font-bold mb-6">
+              <AnimatedHeadline 
+                text="About SuperNova Automations" 
+                delay={0.2}
+                duration={0.9}
+                distance={25}
+              />
+            </h1>
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed">
+              <AnimatedHeadline 
+                text="We're a team of automation experts dedicated to helping businesses leverage the power of technology." 
+                delay={0.5}
+                duration={1.0}
+                distance={30}
+              />
             </p>
           </div>
         </div>
-      </section>
+      </AuroraBackground>
 
       {/* Our Story Section */}
       <section className="py-16 bg-gray-800 relative">
