@@ -53,6 +53,12 @@ body {
   }
 }
 
+@keyframes meteor {
+  0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+}
+
 /* Specific animation for border glow - slower and more consistent */
 @keyframes borderGlowPulse {
   0% {
@@ -89,6 +95,10 @@ body {
 .animate-aurora {
   animation: aurora 60s ease-in-out infinite;
   will-change: background-position;
+}
+
+.animate-meteor-effect {
+  animation: meteor 5s linear infinite;
 }
 
 /* Force animation on Aurora background for debugging */
