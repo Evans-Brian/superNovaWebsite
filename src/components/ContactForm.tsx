@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { Meteors } from './ui/meteors';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -62,16 +63,16 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-neutral-950 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-white mb-6">Contact Us</h2>
+    <div className="bg-neutral-950 rounded-lg shadow-md p-6 relative overflow-hidden">
+      <h2 className="text-2xl font-bold text-white mb-6 relative z-10">Contact Us</h2>
       
       {formStatus.submitted && formStatus.success ? (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative z-10">
           <p>{formStatus.message}</p>
         </div>
       ) : null}
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
             Name *
@@ -175,6 +176,11 @@ export default function ContactForm() {
           </button>
         </div>
       </form>
+      
+      {/* Meteors effect */}
+      <div className="absolute inset-0 z-0">
+        <Meteors number={40} className="opacity-80" />
+      </div>
     </div>
   );
 }

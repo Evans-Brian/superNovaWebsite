@@ -34,6 +34,7 @@ module.exports = {
       },
       animation: {
         aurora: "aurora 60s ease-in-out infinite",
+        "meteor-effect": "meteor 5s linear infinite",
       },
       keyframes: {
         aurora: {
@@ -51,6 +52,14 @@ module.exports = {
           },
           "100%": {
             backgroundPosition: "0% 100%, 0% 0%, 0% 100%",
+          },
+        },
+        meteor: {
+          "0%": { transform: "translate(0, 0) rotate(215deg)", opacity: 1 },
+          "70%": { opacity: 1 },
+          "100%": {
+            transform: "translate(-150px, 150px) rotate(215deg)",
+            opacity: 0,
           },
         },
       },
