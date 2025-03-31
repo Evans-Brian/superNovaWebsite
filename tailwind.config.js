@@ -6,6 +6,7 @@ const {
 module.exports = {
   content: [
     "./src/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
   ],
   darkMode: "class",
   theme: {
@@ -55,10 +56,10 @@ module.exports = {
           },
         },
         meteor: {
-          "0%": { transform: "translate(0, 0) rotate(215deg)", opacity: 1 },
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
           "70%": { opacity: 1 },
           "100%": {
-            transform: "translate(-150px, 150px) rotate(215deg)",
+            transform: "rotate(215deg) translateX(-500px)",
             opacity: 0,
           },
         },
