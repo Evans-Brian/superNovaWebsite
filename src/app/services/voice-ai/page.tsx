@@ -5,6 +5,7 @@ import StarfieldBackground from '@/components/StarfieldBackground';
 import DarkSpaceBackground from '@/components/DarkSpaceBackground';
 import { AnimatedHeadline } from '@/components/text-effects/AnimatedHeadline';
 import { AuroraBackground } from '@/components/aurora-background';
+import { GlowingEffect } from '@/../components/ui/glowing-effect';
 
 export default function VoiceAIPage() {
   return (
@@ -162,6 +163,14 @@ export default function VoiceAIPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-12 relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-1 rounded-xl relative">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
             <div className="relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md feature-card-content" style={{ 
               minHeight: '230px',
               height: '100%',
@@ -186,6 +195,14 @@ export default function VoiceAIPage() {
           </div>
           
           <div className="p-1 rounded-xl relative">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
             <div className="relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md feature-card-content" style={{ 
               minHeight: '230px',
               height: '100%',
@@ -210,6 +227,14 @@ export default function VoiceAIPage() {
           </div>
           
           <div className="p-1 rounded-xl relative">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
             <div className="relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md feature-card-content" style={{ 
               minHeight: '230px',
               height: '100%',
@@ -234,6 +259,14 @@ export default function VoiceAIPage() {
           </div>
           
           <div className="p-1 rounded-xl relative">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
             <div className="relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md feature-card-content" style={{ 
               minHeight: '230px',
               height: '100%',
@@ -258,6 +291,14 @@ export default function VoiceAIPage() {
           </div>
           
           <div className="p-1 rounded-xl relative">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
             <div className="relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md feature-card-content" style={{ 
               minHeight: '230px',
               height: '100%',
@@ -282,6 +323,14 @@ export default function VoiceAIPage() {
           </div>
           
           <div className="p-1 rounded-xl relative">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={3}
+            />
             <div className="relative flex flex-col p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md feature-card-content" style={{ 
               minHeight: '230px',
               height: '100%',

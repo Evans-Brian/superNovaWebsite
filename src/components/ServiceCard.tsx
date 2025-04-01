@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { GlowingEffect } from '../../components/ui/glowing-effect';
 
 interface ServiceCardProps {
   title: string;
@@ -138,114 +139,26 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
     >
       <div 
         ref={cardRef}
-        className={`bg-neutral-950 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:transform hover:scale-105 relative cursor-pointer ${type}`}
+        className="p-1 rounded-xl relative transition-all duration-300 hover:transform hover:scale-105 cursor-pointer"
         style={{
           height: sectionCardsHeight ? `${sectionCardsHeight}px` : '100%',
-          boxShadow: `0 0 ${glowSize} ${glowIntensity > 0.05 ? glowColors.primary : 'transparent'}`,
-          borderColor: glowColors.primary,
-          borderWidth: '1px',
-          borderStyle: 'solid'
         }}
         data-card-type={type}
       >
-        {/* Glow overlay - creates an additional inner glow effect */}
-        <div 
-          className="absolute inset-0 rounded-lg pointer-events-none"
-          style={{
-            background: `linear-gradient(135deg, transparent 0%, ${glowColors.secondary} 50%, ${glowColors.tertiary} 100%)`,
-            opacity: glowIntensity * 0.15,
-            mixBlendMode: 'overlay',
-            animation: glowIntensity > 0.1 ? `pulse ${animationDuration}s ease-in-out infinite alternate` : 'none'
-          }}
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={3}
         />
         
-        {/* Corner accents that light up based on proximity */}
-        <div className="absolute w-4 h-4 top-0 left-0 pointer-events-none">
-          <div 
-            className="absolute w-full h-[1px] transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to right, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              width: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-          <div 
-            className="absolute h-full w-[1px] transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to bottom, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              height: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-        </div>
-        
-        <div className="absolute w-4 h-4 top-0 right-0 pointer-events-none">
-          <div 
-            className="absolute w-full h-[1px] right-0 transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to left, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              width: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-          <div 
-            className="absolute h-full w-[1px] right-0 transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to bottom, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              height: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-        </div>
-        
-        <div className="absolute w-4 h-4 bottom-0 left-0 pointer-events-none">
-          <div 
-            className="absolute w-full h-[1px] bottom-0 transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to right, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              width: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-          <div 
-            className="absolute h-full w-[1px] bottom-0 transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to top, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              height: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-        </div>
-        
-        <div className="absolute w-4 h-4 bottom-0 right-0 pointer-events-none">
-          <div 
-            className="absolute w-full h-[1px] right-0 bottom-0 transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to left, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              width: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-          <div 
-            className="absolute h-full w-[1px] right-0 bottom-0 transition-all duration-300" 
-            style={{ 
-              background: `linear-gradient(to top, ${glowColors.primary}, transparent)`,
-              opacity: glowIntensity, 
-              boxShadow: `0 0 8px ${glowColors.primary}`,
-              height: `${Math.min(100, 20 + glowIntensity * 80)}%` 
-            }}
-          />
-        </div>
-        
-        <div className="p-6">
-          <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
+        <div 
+          className={`bg-neutral-950 rounded-lg shadow-md overflow-hidden relative ${type}`}
+        >
+          <div className="p-6">
+            <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
             {icon === 'voice' && (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
@@ -262,8 +175,9 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
               </svg>
             )}
           </div>
-          <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-          <p className="text-gray-300">{description}</p>
+            <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+            <p className="text-gray-300">{description}</p>
+          </div>
         </div>
       </div>
     </Link>
