@@ -4,7 +4,7 @@ import KeyFeaturesWrapper from '@/components/KeyFeaturesWrapper';
 import BenefitsWrapper from '@/components/BenefitsWrapper';
 import ApproachWrapper from '@/components/ApproachWrapper';
 import StarfieldBackground from '@/components/StarfieldBackground';
-import SpaceBackground from '@/components/SpaceBackground';
+import DarkSpaceBackground from '@/components/DarkSpaceBackground';
 import { AnimatedHeadline } from '@/components/text-effects/AnimatedHeadline';
 import { AuroraBackground } from '@/components/aurora-background';
 
@@ -36,7 +36,7 @@ export default function CustomIntegrationsPage() {
       </AuroraBackground>
 
       {/* Overview Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -62,7 +62,7 @@ export default function CustomIntegrationsPage() {
             </div>
           </div>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
 
       {/* Integration Types Section */}
       <StarfieldBackground>
@@ -160,7 +160,7 @@ export default function CustomIntegrationsPage() {
       </StarfieldBackground>
 
       {/* Common Integrations Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Common Integration Scenarios</h2>
@@ -267,7 +267,7 @@ export default function CustomIntegrationsPage() {
             </div>
           </BenefitsWrapper>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
 
       {/* Our Approach Section */}
       <StarfieldBackground>

@@ -93,11 +93,13 @@ const FeatureCard = forwardRef<HTMLDivElement, FeatureCardProps>(
         
         <div className="relative flex flex-col items-center justify-between p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] shadow-md card-content-container" 
              style={{ 
-               backgroundColor: '#e6eeff',
+               backgroundColor: '#111827', // Dark background from DarkSpaceBackground
                backgroundImage: `
-                 radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.08), transparent 60%),
-                 radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.06), transparent 50%)
-               `
+                 radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.3), transparent 60%),
+                 radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.2), transparent 50%),
+                 radial-gradient(circle at 2px 2px, rgba(102, 57, 218, 0.1) 2px, transparent 0px)
+               `,
+               backgroundSize: '100% 100%, 100% 100%, 20px 20px'
              }}>
           <div className="icon-container flex items-center justify-center w-16 h-16 rounded-full text-white mb-2" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
             {/* Orbit particles that appear on hover */}
@@ -109,8 +111,8 @@ const FeatureCard = forwardRef<HTMLDivElement, FeatureCardProps>(
             {icon}
           </div>
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
-            <p className="text-gray-700">
+            <h3 className="text-xl font-semibold text-white">{title}</h3>
+            <p className="text-gray-300">
               {description}
             </p>
           </div>
