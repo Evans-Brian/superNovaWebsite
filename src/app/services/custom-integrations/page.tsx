@@ -40,14 +40,14 @@ export default function CustomIntegrationsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Seamless Connections for Your Business</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-3xl font-bold text-white mb-6">Seamless Connections for Your Business</h2>
+              <p className="text-gray-300 mb-4">
                 In today&apos;s digital landscape, businesses rely on multiple systems and applications to operate efficiently. Our Custom Integration solutions bridge the gap between these systems, enabling seamless data flow and process automation.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-300 mb-4">
                 Whether you need to connect your CRM with your ERP, integrate e-commerce platforms with inventory management, or build custom APIs for third-party services, our team of integration experts can design and implement solutions that meet your specific requirements.
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-300">
                 We focus on creating reliable, scalable, and secure integrations that enhance your operational efficiency and provide a unified view of your business data.
               </p>
             </div>
@@ -163,8 +163,8 @@ export default function CustomIntegrationsPage() {
       <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Common Integration Scenarios</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">Common Integration Scenarios</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We&apos;ve helped businesses across various industries connect their systems and streamline their operations.
             </p>
           </div>
@@ -179,8 +179,8 @@ export default function CustomIntegrationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">E-commerce Integrations</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">E-commerce Integrations</h3>
+                <p className="text-gray-300">
                   Connect your online store with inventory management, shipping providers, payment processors, and accounting systems for a seamless order fulfillment process.
                 </p>
               </div>
@@ -195,8 +195,8 @@ export default function CustomIntegrationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">CRM & Marketing Automation</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">CRM & Marketing Automation</h3>
+                <p className="text-gray-300">
                   Integrate your CRM with marketing automation platforms, email marketing tools, and social media to create a unified customer engagement strategy.
                 </p>
               </div>
@@ -211,8 +211,8 @@ export default function CustomIntegrationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">ERP & Financial Systems</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">ERP & Financial Systems</h3>
+                <p className="text-gray-300">
                   Connect your ERP with financial management, accounting, and reporting tools to streamline financial operations and improve data accuracy.
                 </p>
               </div>
@@ -227,8 +227,8 @@ export default function CustomIntegrationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Business Intelligence</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Business Intelligence</h3>
+                <p className="text-gray-300">
                   Integrate data sources with analytics and reporting tools to create comprehensive dashboards and gain valuable business insights.
                 </p>
               </div>
@@ -243,8 +243,8 @@ export default function CustomIntegrationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Supply Chain Management</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Supply Chain Management</h3>
+                <p className="text-gray-300">
                   Connect inventory, procurement, logistics, and supplier management systems to create a transparent and efficient supply chain.
                 </p>
               </div>
@@ -259,8 +259,8 @@ export default function CustomIntegrationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cloud Service Integrations</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Cloud Service Integrations</h3>
+                <p className="text-gray-300">
                   Integrate with cloud services like AWS, Azure, or Google Cloud to leverage cloud storage, computing, and specialized services.
                 </p>
               </div>
