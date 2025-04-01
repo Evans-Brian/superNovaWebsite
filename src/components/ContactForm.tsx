@@ -185,7 +185,7 @@ export default function ContactForm() {
       
       {/* Meteors effect */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <Meteors number={20} />
+        <Meteors number={20} position="both" />
       </div>
     </div>
   );

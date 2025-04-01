@@ -139,7 +139,7 @@ export default function DarkKeyFeaturesWrapper({
     <DarkSpaceBackground 
       className="py-10 text-white"
     >
-      {meteorEffect && <Meteors number={20} />}
+      {meteorEffect && <Meteors number={20} position="both" />}
       
       {/* Feature cards grid */}
       <div ref={gridRef} className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${columns} gap-8 gap-y-12 relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>

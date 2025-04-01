@@ -6,9 +6,11 @@ import React, { useState, useEffect } from "react";
 export const Meteors = ({
   number,
   className,
+  position = "top",
 }: {
   number?: number;
   className?: string;
+  position?: "top" | "left" | "both";
 }) => {
   const meteorCount = number || 20;
   const [meteors, setMeteors] = useState<Array<{
@@ -21,12 +23,42 @@ export const Meteors = ({
   // Complete refresh of all meteors
   useEffect(() => {
     const generateMeteors = () => {
-      return Array.from({ length: meteorCount }, (_, idx) => ({
-        id: Date.now() + idx, // Use timestamp + index for unique id
-        top: `${Math.floor(Math.random() * 70)}%`, // Limit to top 70% of container
-        left: `${Math.floor(Math.random() * 800) - 200}px`,
-        duration: `${Math.floor(Math.random() * 8) + 2}s`,
-      }));
+      return Array.from({ length: meteorCount }, (_, idx) => {
+        // Generate different position values based on the position prop
+        if (position === "both") {
+          // For "both" position, alternate between top and left, or distribute more evenly
+          const isTop = idx % 2 === 0; // Alternate between top and left
+          if (isTop) {
+            return {
+              id: Date.now() + idx, // Use timestamp + index for unique id
+              top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
+              left: `${Math.floor(Math.random() * 800) - 200}px`,
+              duration: `${Math.floor(Math.random() * 8) + 2}s`,
+            };
+          } else {
+            return {
+              id: Date.now() + idx,
+              top: `${Math.floor(Math.random() * 100)}%`, // Full height range
+              left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
+              duration: `${Math.floor(Math.random() * 8) + 2}s`,
+            };
+          }
+        } else if (position === "top") {
+          return {
+            id: Date.now() + idx,
+            top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
+            left: `${Math.floor(Math.random() * 800) - 200}px`,
+            duration: `${Math.floor(Math.random() * 8) + 2}s`,
+          };
+        } else { // "left"
+          return {
+            id: Date.now() + idx,
+            top: `${Math.floor(Math.random() * 100)}%`, // Full height range
+            left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
+            duration: `${Math.floor(Math.random() * 8) + 2}s`,
+          };
+        }
+      });
     };
     
     setMeteors(generateMeteors());
@@ -44,14 +76,45 @@ export const Meteors = ({
         }
         
         // Create a new array with refreshed meteors
-        return prev.map((meteor, idx) => 
-          indexes.has(idx) ? {
-            id: Date.now() + idx,
-            top: `${Math.floor(Math.random() * 70)}%`, // Limit to top 70% of container
-            left: `${Math.floor(Math.random() * 800) - 200}px`,
-            duration: `${Math.floor(Math.random() * 8) + 2}s`,
-          } : meteor
-        );
+        return prev.map((meteor, idx) => {
+          if (indexes.has(idx)) {
+            // Generate different position values based on the position prop
+            if (position === "both") {
+              // For "both" position, alternate between top and left, or distribute more evenly
+              const isTop = idx % 2 === 0; // Alternate between top and left
+              if (isTop) {
+                return {
+                  id: Date.now() + idx,
+                  top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
+                  left: `${Math.floor(Math.random() * 800) - 200}px`,
+                  duration: `${Math.floor(Math.random() * 8) + 2}s`,
+                };
+              } else {
+                return {
+                  id: Date.now() + idx,
+                  top: `${Math.floor(Math.random() * 100)}%`, // Full height range
+                  left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
+                  duration: `${Math.floor(Math.random() * 8) + 2}s`,
+                };
+              }
+            } else if (position === "top") {
+              return {
+                id: Date.now() + idx,
+                top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
+                left: `${Math.floor(Math.random() * 800) - 200}px`,
+                duration: `${Math.floor(Math.random() * 8) + 2}s`,
+              };
+            } else { // "left"
+              return {
+                id: Date.now() + idx,
+                top: `${Math.floor(Math.random() * 100)}%`, // Full height range
+                left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
+                duration: `${Math.floor(Math.random() * 8) + 2}s`,
+              };
+            }
+          }
+          return meteor;
+        });
       });
     }, 3000);
     
