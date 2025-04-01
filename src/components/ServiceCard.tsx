@@ -14,7 +14,8 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, icon, link, type = "Other Service Cards" }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [glowIntensity, setGlowIntensity] = useState(0);
+  // We still use setGlowIntensity in the mouse event handler but don't need to reference the value directly
+  const [, setGlowIntensity] = useState(0);
   const [cardPosition, setCardPosition] = useState({ x: 0, y: 0, width: 0, height: 0 });
   
   // State to store parent section's cards heights
@@ -96,7 +97,7 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
     };
   }, [type]);
   
-  // Track mouse position and calculate glow intensity
+  // Track mouse position for glowing effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (cardRef.current) {
@@ -117,20 +118,6 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [cardPosition]);
-  
-  // Calculate glow effect based on intensity
-  // Use a gradient of colors for a more vibrant effect (purple to blue)
-  const glowColors = {
-    primary: `rgba(102, 57, 218, ${glowIntensity * 0.8})`,  // Purple
-    secondary: `rgba(66, 153, 225, ${glowIntensity * 0.5})`, // Blue
-    tertiary: `rgba(236, 72, 153, ${glowIntensity * 0.3})`,  // Pink
-  };
-  
-  const glowSize = `${Math.max(5, glowIntensity * 15)}px`;
-  
-  // Calculate a subtle animation speed based on proximity
-  // Closer = faster animation
-  const animationDuration = Math.max(2, 8 - glowIntensity * 6); // Between 2-8s
   
   return (
     <Link 
@@ -185,7 +172,7 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
               </svg>
             )}
-          </div>
+            </div>
             <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
             <p className="text-gray-300">{description}</p>
           </div>

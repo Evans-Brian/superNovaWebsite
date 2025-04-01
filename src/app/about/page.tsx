@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { AnimatedHeadline } from '../../components/text-effects/AnimatedHeadline';
 import { AuroraBackground } from '../../components/aurora-background';
-import SpaceBackground from '@/components/SpaceBackground';
 import StarfieldBackground from '@/components/StarfieldBackground';
 import DarkSpaceBackground from '@/components/DarkSpaceBackground';
 import BorderGlow from '@/components/ui/BorderGlow';

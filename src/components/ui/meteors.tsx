@@ -140,7 +140,7 @@ export const Meteors = ({
     }, 3000);
     
     return () => clearInterval(intervalId);
-  }, [meteorCount]);
+  }, [meteorCount, position]);
 
   if (meteors.length === 0) {
     return null;
