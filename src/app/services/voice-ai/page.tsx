@@ -100,6 +100,7 @@ export default function VoiceAIPage() {
       {/* Features Section */}
       <DarkSpaceBackground className="py-10 text-white">
         {/* Script for equalizing card heights */}
+        {/* Client-side card height equalization */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -132,7 +133,7 @@ export default function VoiceAIPage() {
                 // Try immediately
                 equalizeCardHeights();
                 
-                // And also after a short delay to ensure DOM is settled
+                // Use setTimeout to ensure DOM is fully rendered
                 setTimeout(equalizeCardHeights, 50);
                 setTimeout(equalizeCardHeights, 500);
               };
