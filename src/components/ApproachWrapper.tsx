@@ -30,12 +30,12 @@ const ApproachStepWrapper = React.forwardRef<HTMLDivElement, ApproachStepWrapper
           borderWidth={3}
         />
         <div 
-          className="relative p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] shadow-md approach-content"
+          className="relative p-6 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-md approach-content"
           style={{ 
-            backgroundColor: '#e6eeff',
+            backgroundColor: '#1a2134',
             backgroundImage: `
-              radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.08), transparent 60%),
-              radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.06), transparent 50%)
+              radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.15), transparent 60%),
+              radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.12), transparent 50%)
             `
           }}
         >
