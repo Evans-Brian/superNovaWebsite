@@ -23,7 +23,7 @@ export const Meteors = ({
     const generateMeteors = () => {
       return Array.from({ length: meteorCount }, (_, idx) => ({
         id: Date.now() + idx, // Use timestamp + index for unique id
-        top: `${Math.floor(Math.random() * 100)}%`,
+        top: `${Math.floor(Math.random() * 70)}%`, // Limit to top 70% of container
         left: `${Math.floor(Math.random() * 800) - 200}px`,
         duration: `${Math.floor(Math.random() * 8) + 2}s`,
       }));
@@ -47,7 +47,7 @@ export const Meteors = ({
         return prev.map((meteor, idx) => 
           indexes.has(idx) ? {
             id: Date.now() + idx,
-            top: `${Math.floor(Math.random() * 100)}%`,
+            top: `${Math.floor(Math.random() * 70)}%`, // Limit to top 70% of container
             left: `${Math.floor(Math.random() * 800) - 200}px`,
             duration: `${Math.floor(Math.random() * 8) + 2}s`,
           } : meteor
