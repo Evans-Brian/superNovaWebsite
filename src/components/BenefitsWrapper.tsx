@@ -22,7 +22,14 @@ const BenefitWrapper = React.forwardRef<HTMLDivElement, BenefitWrapperProps>(
         onMouseLeave={onMouseLeave}
       >
         {/* No GlowingEffect for Constellation Effect, only constellation network */}
-        <div className="relative flex items-start p-4 gap-4 overflow-hidden rounded-lg border-[0.75px] bg-gray-900 shadow-sm benefit-content">
+        <div className="relative flex items-start p-4 gap-4 overflow-hidden rounded-lg border-[0.75px] border-gray-700 shadow-sm benefit-content"
+          style={{ 
+            backgroundColor: '#1a2134',
+            backgroundImage: `
+              radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.15), transparent 60%),
+              radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.12), transparent 50%)
+            `
+          }}>
           {children}
         </div>
       </div>

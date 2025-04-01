@@ -178,8 +178,8 @@ export default function ProcessAutomationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Increased Efficiency</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Increased Efficiency</h3>
+                <p className="text-gray-300">
                   Automate repetitive tasks to reduce processing times by up to 80%, allowing your team to accomplish more in less time.
                 </p>
               </div>
@@ -194,8 +194,8 @@ export default function ProcessAutomationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Improved Accuracy</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Improved Accuracy</h3>
+                <p className="text-gray-300">
                   Eliminate human errors in data entry and processing, ensuring consistent and accurate results every time.
                 </p>
               </div>
@@ -210,8 +210,8 @@ export default function ProcessAutomationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cost Reduction</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Cost Reduction</h3>
+                <p className="text-gray-300">
                   Reduce operational costs by automating manual processes, minimizing resource requirements, and optimizing resource allocation.
                 </p>
               </div>
@@ -226,8 +226,8 @@ export default function ProcessAutomationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Scalability</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Scalability</h3>
+                <p className="text-gray-300">
                   Easily scale your operations to handle increased workloads without proportionally increasing staff or resources.
                 </p>
               </div>
@@ -242,8 +242,8 @@ export default function ProcessAutomationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Compliance & Traceability</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Compliance & Traceability</h3>
+                <p className="text-gray-300">
                   Ensure regulatory compliance with automated audit trails, documentation, and standardized processes.
                 </p>
               </div>
@@ -258,8 +258,8 @@ export default function ProcessAutomationsPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Employee Satisfaction</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Employee Satisfaction</h3>
+                <p className="text-gray-300">
                   Free your employees from repetitive tasks, allowing them to focus on more meaningful, creative, and strategic work.
                 </p>
               </div>
