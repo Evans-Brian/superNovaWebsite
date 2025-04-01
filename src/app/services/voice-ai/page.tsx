@@ -36,18 +36,18 @@ export default function VoiceAIPage() {
       </AuroraBackground>
 
       {/* Overview Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Harness the Power of Voice Agent</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-3xl font-bold text-white mb-6">Harness the Power of Voice Agent</h2>
+              <p className="text-gray-300 mb-4">
                 Our Voice Agent solutions leverage advanced natural language processing and machine learning to create intelligent voice-driven systems that understand, respond, and learn from interactions.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-300 mb-4">
                 Whether you&apos;re looking to automate customer service, enhance accessibility, or create voice-controlled applications, our solutions can be tailored to meet your specific business needs.
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-300">
                 With SuperNova Automations, you get more than just technology – you get a partner committed to helping you achieve your business goals through innovative voice solutions.
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function VoiceAIPage() {
             </div>
           </div>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
 
       {/* Video Demos Section */}
       <StarfieldBackground>

@@ -7,7 +7,6 @@ import StarfieldBackground from "@/components/StarfieldBackground";
 import SpaceBackground from "@/components/SpaceBackground";
 import BorderGlow from "@/components/ui/BorderGlow";
 import Link from "next/link";
-import { useEffect } from "react";
 
 export default function Home() {
   return (

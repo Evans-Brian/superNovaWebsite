@@ -4,6 +4,7 @@ import KeyFeaturesWrapper from '../../../components/KeyFeaturesWrapper';
 import BenefitsWrapper from '../../../components/BenefitsWrapper';
 import StarfieldBackground from '../../../components/StarfieldBackground';
 import SpaceBackground from '@/components/SpaceBackground';
+import DarkSpaceBackground from '@/components/DarkSpaceBackground';
 import { AnimatedHeadline } from '../../../components/text-effects/AnimatedHeadline';
 import { AuroraBackground } from '../../../components/aurora-background';
 
@@ -35,18 +36,18 @@ export default function ProcessAutomationsPage() {
       </AuroraBackground>
 
       {/* Overview Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Transform Your Business Operations</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-3xl font-bold text-white mb-6">Transform Your Business Operations</h2>
+              <p className="text-gray-300 mb-4">
                 Our Process Automation solutions leverage cutting-edge technology to automate repetitive tasks, streamline workflows, and optimize business processes.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-300 mb-4">
                 By automating manual processes, your team can focus on high-value activities that drive innovation and growth, while reducing errors and improving consistency.
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-300">
                 Whether you&apos;re looking to automate a single process or transform your entire operation, our solutions can be tailored to meet your specific business needs.
               </p>
             </div>
@@ -61,7 +62,7 @@ export default function ProcessAutomationsPage() {
             </div>
           </div>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
 
       {/* Use Cases Section */}
       <StarfieldBackground>
@@ -159,11 +160,11 @@ export default function ProcessAutomationsPage() {
       </StarfieldBackground>
 
       {/* Benefits Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Benefits of Process Automation</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">Benefits of Process Automation</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Implementing our Process Automation solutions can deliver significant benefits to your organization.
             </p>
           </div>
@@ -266,7 +267,7 @@ export default function ProcessAutomationsPage() {
             </div>
           </BenefitsWrapper>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
 
       {/* CTA Section */}
       <section className="py-16 text-white relative" style={{ 

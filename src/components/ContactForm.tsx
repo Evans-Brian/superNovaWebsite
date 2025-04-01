@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, Suspense } from 'react';
+import { useState, FormEvent } from 'react';
 import dynamic from 'next/dynamic';
 
 // Import Meteors with SSR disabled
