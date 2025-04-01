@@ -147,10 +147,9 @@ export default function RippleSupernovaBg({
             x: touch.clientX - rect.left,
             y: touch.clientY - rect.top
           };
-          isMouseActiveRef.current = true;
-          
-          // Prevent scrolling while interacting with the canvas
-          e.preventDefault();
+      isMouseActiveRef.current = true;
+      
+      // Allow scrolling while still getting the interaction effect
         }
       }
     };
@@ -163,7 +162,7 @@ export default function RippleSupernovaBg({
     if (container) {
       container.addEventListener('mousemove', handleMouseMove);
       container.addEventListener('mouseleave', handleMouseLeave);
-      container.addEventListener('touchmove', handleTouchMove, { passive: false });
+      container.addEventListener('touchmove', handleTouchMove, { passive: true });
       container.addEventListener('touchend', handleTouchEnd);
     }
     
