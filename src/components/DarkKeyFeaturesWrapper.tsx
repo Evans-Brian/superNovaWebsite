@@ -55,18 +55,12 @@ interface DarkKeyFeaturesWrapperProps {
   children: React.ReactNode;
   columns?: number;
   meteorEffect?: boolean;
-  borderGlow?: boolean;
-  title?: string;
-  description?: string;
 }
 
 export default function DarkKeyFeaturesWrapper({ 
   children, 
   columns = 3, 
-  meteorEffect = true,
-  borderGlow = true,
-  title,
-  description
+  meteorEffect = true
 }: DarkKeyFeaturesWrapperProps) {
   const childrenArray = React.Children.toArray(children);
   
@@ -144,7 +138,6 @@ export default function DarkKeyFeaturesWrapper({
   return (
     <DarkSpaceBackground 
       className="py-10 text-white"
-      meteorEffect={meteorEffect}
     >
       {meteorEffect && <Meteors number={20} />}
       

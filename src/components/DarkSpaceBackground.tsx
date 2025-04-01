@@ -6,13 +6,11 @@ import BorderGlow from './ui/BorderGlow';
 interface DarkSpaceBackgroundProps {
   children: React.ReactNode;
   className?: string;
-  meteorEffect?: boolean;
 }
 
 export default function DarkSpaceBackground({ 
   children, 
-  className = '',
-  meteorEffect = false
+  className = ''
 }: DarkSpaceBackgroundProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   

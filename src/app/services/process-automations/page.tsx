@@ -3,7 +3,6 @@ import Image from 'next/image';
 import KeyFeaturesWrapper from '../../../components/KeyFeaturesWrapper';
 import BenefitsWrapper from '../../../components/BenefitsWrapper';
 import StarfieldBackground from '../../../components/StarfieldBackground';
-import SpaceBackground from '@/components/SpaceBackground';
 import DarkSpaceBackground from '@/components/DarkSpaceBackground';
 import { AnimatedHeadline } from '../../../components/text-effects/AnimatedHeadline';
 import { AuroraBackground } from '../../../components/aurora-background';
