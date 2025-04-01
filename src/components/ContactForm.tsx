@@ -1,7 +1,13 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
-import { Meteors } from './ui/meteors';
+import { useState, FormEvent, Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+// Import Meteors with SSR disabled
+const Meteors = dynamic(() => import('./ui/meteors').then(mod => mod.Meteors), { 
+  ssr: false,
+  loading: () => null
+});
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
