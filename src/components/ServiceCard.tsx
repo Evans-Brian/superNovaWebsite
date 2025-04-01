@@ -156,6 +156,17 @@ export default function ServiceCard({ title, description, icon, link, type = "Ot
         
         <div 
           className={`bg-neutral-950 rounded-lg shadow-md overflow-hidden relative ${type}`}
+          style={type === "Our Services Service Cards" && title.includes("Voice") ? { 
+            minHeight: '230px',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: '#1a2134',
+            backgroundImage: `
+              radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.15), transparent 60%),
+              radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.12), transparent 50%)
+            `
+          } : {}}
         >
           <div className="p-6">
             <div className="flex items-center justify-center w-12 h-12 rounded-md text-white mb-4" style={{ backgroundColor: 'rgb(102, 57, 218)' }}>
