@@ -82,12 +82,12 @@ export default function AboutPage() {
                   borderWidth={3}
                 />
                 <div 
-                  className="p-6 rounded-lg shadow-md"
+                  className="p-6 rounded-lg border-[0.75px] border-gray-700 shadow-md"
                   style={{ 
-                    backgroundColor: '#e6eeff',
+                    backgroundColor: '#1a2134',
                     backgroundImage: `
-                      radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.08), transparent 60%),
-                      radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.06), transparent 50%)
+                      radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.15), transparent 60%),
+                      radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.12), transparent 50%)
                     `
                   }}
                 >
@@ -96,8 +96,8 @@ export default function AboutPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Efficiency</h3>
-                  <p className="text-gray-700">
+                  <h3 className="text-xl font-semibold text-white mb-2">Efficiency</h3>
+                  <p className="text-gray-300">
                     We help businesses streamline their operations and eliminate repetitive tasks through intelligent automation.
                   </p>
                 </div>
@@ -113,12 +113,12 @@ export default function AboutPage() {
                   borderWidth={3}
                 />
                 <div 
-                  className="p-6 rounded-lg shadow-md"
+                  className="p-6 rounded-lg border-[0.75px] border-gray-700 shadow-md"
                   style={{ 
-                    backgroundColor: '#e6eeff',
+                    backgroundColor: '#1a2134',
                     backgroundImage: `
-                      radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.08), transparent 60%),
-                      radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.06), transparent 50%)
+                      radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.15), transparent 60%),
+                      radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.12), transparent 50%)
                     `
                   }}
                 >
@@ -127,8 +127,8 @@ export default function AboutPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovation</h3>
-                  <p className="text-gray-700">
+                  <h3 className="text-xl font-semibold text-white mb-2">Innovation</h3>
+                  <p className="text-gray-300">
                     We stay at the forefront of technology to bring innovative solutions to our clients&apos; most challenging problems.
                   </p>
                 </div>
@@ -144,12 +144,12 @@ export default function AboutPage() {
                   borderWidth={3}
                 />
                 <div 
-                  className="p-6 rounded-lg shadow-md"
+                  className="p-6 rounded-lg border-[0.75px] border-gray-700 shadow-md"
                   style={{ 
-                    backgroundColor: '#e6eeff',
+                    backgroundColor: '#1a2134',
                     backgroundImage: `
-                      radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.08), transparent 60%),
-                      radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.06), transparent 50%)
+                      radial-gradient(circle at 40% 40%, rgba(102, 57, 218, 0.15), transparent 60%),
+                      radial-gradient(circle at 60% 60%, rgba(66, 153, 225, 0.12), transparent 50%)
                     `
                   }}
                 >
@@ -158,8 +158,8 @@ export default function AboutPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Empowerment</h3>
-                  <p className="text-gray-700">
+                  <h3 className="text-xl font-semibold text-white mb-2">Empowerment</h3>
+                  <p className="text-gray-300">
                     We empower our clients with the knowledge and tools they need to thrive in an increasingly digital world.
                   </p>
                 </div>
