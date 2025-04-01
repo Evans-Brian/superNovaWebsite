@@ -35,7 +35,7 @@ module.exports = {
       },
       animation: {
         aurora: "aurora 60s ease-in-out infinite",
-        "meteor-effect": "meteor 5s linear infinite",
+        "meteor-effect": "meteor 11.5s linear infinite",
       },
       keyframes: {
         aurora: {

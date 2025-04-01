@@ -18,6 +18,7 @@ export const Meteors = ({
     top: string;
     left: string;
     duration: string;
+    size: number;
   }>>([]);
 
   // Complete refresh of all meteors
@@ -25,6 +26,9 @@ export const Meteors = ({
     const generateMeteors = () => {
       return Array.from({ length: meteorCount }, (_, idx) => {
         // Generate different position values based on the position prop
+        // Generate a random size between 80% and 120% of the original size
+        const randomSize = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
+        
         if (position === "both") {
           // For "both" position, alternate between top and left, or distribute more evenly
           const isTop = idx % 2 === 0; // Alternate between top and left
@@ -33,14 +37,16 @@ export const Meteors = ({
               id: Date.now() + idx, // Use timestamp + index for unique id
               top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
               left: `${Math.floor(Math.random() * 800) - 200}px`,
-              duration: `${Math.floor(Math.random() * 8) + 2}s`,
+              duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+              size: randomSize,
             };
           } else {
             return {
               id: Date.now() + idx,
               top: `${Math.floor(Math.random() * 100)}%`, // Full height range
               left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
-              duration: `${Math.floor(Math.random() * 8) + 2}s`,
+              duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+              size: randomSize,
             };
           }
         } else if (position === "top") {
@@ -48,14 +54,16 @@ export const Meteors = ({
             id: Date.now() + idx,
             top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
             left: `${Math.floor(Math.random() * 800) - 200}px`,
-            duration: `${Math.floor(Math.random() * 8) + 2}s`,
+            duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+            size: randomSize,
           };
         } else { // "left"
           return {
             id: Date.now() + idx,
             top: `${Math.floor(Math.random() * 100)}%`, // Full height range
             left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
-            duration: `${Math.floor(Math.random() * 8) + 2}s`,
+            duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+            size: randomSize,
           };
         }
       });
@@ -83,33 +91,46 @@ export const Meteors = ({
               // For "both" position, alternate between top and left, or distribute more evenly
               const isTop = idx % 2 === 0; // Alternate between top and left
               if (isTop) {
+                // Generate a random size between 80% and 120% of the original size
+                const randomSize = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
+                
                 return {
                   id: Date.now() + idx,
                   top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
                   left: `${Math.floor(Math.random() * 800) - 200}px`,
-                  duration: `${Math.floor(Math.random() * 8) + 2}s`,
+                  duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+                  size: randomSize,
                 };
               } else {
+                const randomSize = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
+                
                 return {
                   id: Date.now() + idx,
                   top: `${Math.floor(Math.random() * 100)}%`, // Full height range
                   left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
-                  duration: `${Math.floor(Math.random() * 8) + 2}s`,
+                  duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+                  size: randomSize,
                 };
               }
             } else if (position === "top") {
+              const randomSize = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
+              
               return {
                 id: Date.now() + idx,
                 top: `${Math.floor(Math.random() * 5)}%`, // Limit to top 5% of container
                 left: `${Math.floor(Math.random() * 800) - 200}px`,
-                duration: `${Math.floor(Math.random() * 8) + 2}s`,
+                duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+                size: randomSize,
               };
             } else { // "left"
+              const randomSize = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
+              
               return {
                 id: Date.now() + idx,
                 top: `${Math.floor(Math.random() * 100)}%`, // Full height range
                 left: `${Math.floor(Math.random() * 10)}%`, // Limit to left 10% of container
-                duration: `${Math.floor(Math.random() * 8) + 2}s`,
+                duration: `${Math.floor(Math.random() * 8) + 3.5}s`,
+                size: randomSize,
               };
             }
           }
@@ -139,6 +160,7 @@ export const Meteors = ({
             top: meteor.top,
             left: meteor.left,
             animationDuration: meteor.duration,
+            transform: `scale(${meteor.size})`,
           }}
         />
       ))}
