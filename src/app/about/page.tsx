@@ -3,6 +3,7 @@ import { AnimatedHeadline } from '../../components/text-effects/AnimatedHeadline
 import { AuroraBackground } from '../../components/aurora-background';
 import SpaceBackground from '@/components/SpaceBackground';
 import StarfieldBackground from '@/components/StarfieldBackground';
+import DarkSpaceBackground from '@/components/DarkSpaceBackground';
 import BorderGlow from '@/components/ui/BorderGlow';
 import { GlowingEffect } from '../../../components/ui/glowing-effect';
 
@@ -34,18 +35,18 @@ export default function AboutPage() {
       </AuroraBackground>
 
       {/* Our Story Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-3xl font-bold text-white mb-6">Our Story</h2>
+              <p className="text-gray-300 mb-4">
                 SuperNova Automations was founded with a simple mission: to help businesses harness the power of automation and artificial intelligence to work smarter, not harder.
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-300 mb-4">
                 Our founder, drawing on experience in the tech industry, saw that many businesses were struggling to keep up with the rapid pace of technological change. They were either overwhelmed by the complexity of new tools or unsure how to integrate them into their existing workflows.
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-300">
                 That&apos;s where we come in. We bridge the gap between cutting-edge technology and practical business applications, delivering solutions that are both innovative and accessible.
               </p>
             </div>
@@ -54,7 +55,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
 
       {/* Our Mission Section with Starfield Background */}
       <section className="text-white relative">
