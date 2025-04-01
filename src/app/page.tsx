@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import NebulaDepthCard from "@/components/NebulaDepthCard";
 import FeatureCardGrid from "@/components/FeatureCardGrid";
 import StarfieldBackground from "@/components/StarfieldBackground";
-import SpaceBackground from "@/components/SpaceBackground";
+import DarkSpaceBackground from "@/components/DarkSpaceBackground";
 import BorderGlow from "@/components/ui/BorderGlow";
 import Link from "next/link";
 
@@ -14,11 +14,11 @@ export default function Home() {
       <HeroSection />
       
       {/* Services Section */}
-      <SpaceBackground className="py-16">
+      <DarkSpaceBackground className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">Our Services</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We offer a range of automation solutions to help your business operate more efficiently and effectively.
             </p>
           </div>
@@ -44,7 +44,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </SpaceBackground>
+      </DarkSpaceBackground>
       
       {/* Why Choose Us Section */}
       <section className="text-white relative">
