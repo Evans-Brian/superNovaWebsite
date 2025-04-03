@@ -348,7 +348,7 @@ export default function RippleSupernovaBg({
         if (isMouseActiveRef.current) {
           // Create a non-linear distortion effect
           // Particles closer to the mouse are affected more dramatically
-          const distortionStrength = Math.pow(strength, 1.5) * 80;
+          const distortionStrength = Math.pow(strength, 1.5) * 110;
           
           // Store velocities for doppler effect
           particle.vx = -normalizedDx * distortionStrength * 0.1;
